@@ -12,11 +12,11 @@ const Homepage = () => {
     <div className=' mt-10 bg-gradient-to-t from-[#4294C7] to-[#21441E] h-[40rem] flex justify-center'>
         <div className=' flex flex-col justify-center items-center text-white'>
 
-            <h1 className='text-6xl font-sans font-medium'>
+            <h1 className='text-6xl font-sans font-medium text-center'>
               Explora las maravillas de Nicaragua
             </h1>
 
-            <p className='font-thin text-xl mt-4'>
+            <p className='font-thin text-xl mt-4 text-center'>
               Descubre destinos únicos, planifica rutas y vive experiencias inolvidables
             </p>
 
@@ -36,9 +36,9 @@ const Homepage = () => {
     {/*=======SEGUNDA SECTION DEL HOMEPAGE========*/}
     <div className='min-h-screen h-screen flex justify-center p-[8rem]'>
         <div className='flex flex-col items-center'>
-            <h1 className='font-bold text-5xl text-[#21441e]'>Destinos destacados</h1>
+            <h1 className='font-bold lg:text-5xl text-[#21441e] text-4xl text-center'>Destinos destacados</h1>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem]'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem] justify-items-center'>
             {/*==========AQUÍ VAN LAS CARDS CON CIUDADES RECOMENDADOS========*/}
 
                   {/* EJEMPLO DE CARD */}

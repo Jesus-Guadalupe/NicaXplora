@@ -110,7 +110,7 @@ function Signup({ onSwitch }) {
 }
 
 // Manejo de Login
-export default function AuthPage() {
+export default function LoginComp() {
   const [isLogin, setIsLogin] = useState(true);
 
   return (

@@ -15,7 +15,7 @@ const NotFavorites = () => {
             Explora destinos y agrega los que más te gusten a tus favoritos
           </p>
 
-          <Link to={"/homepage"}>
+          <Link to={"/destinos"}>
             <button className='bg-[#346430] py-4 px-[3rem] rounded-lg text-white font-bold mt-6 hover:bg-[#1c4e42] hover:shadow-lg'>
               Explora Destinos
             </button>
