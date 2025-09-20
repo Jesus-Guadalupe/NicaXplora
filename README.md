@@ -4,6 +4,7 @@
 <p>NicaXplora es una aplicacion web desarrollada para el HACKATHON Nicaragua 2025, este sitio esta siendo diseñado para ayudar a usuarios tanto nacionales como extranjeros a explorar destinos turisticos en Nicaragua de forma sencilla, interactiva y rapida. Este proyecto tiene como objetivo mejorar la experiencia de los usuarios a descubrir lugares; dando a conocer rutas(Carreteras), tipos de transporte con sus respectivos datos y recomendando sitios de gran valor nacional y en los cuales se pueden vivir experiencias naturalez incomparables.</p>
 
 ------------
+###### ⚠ Se hace del conocimiento de los evaluadores que este proyecto se encuentra en fase de desarrollo, por lo cual este archivo MarckDown podria cambiar si se agregan nuevas dependencias o cualquier tipo de cambio tecnico.
 
 #### Algunos requisitos que necesitas antes de instalar y ejecutar la aplicacion son:
 ##### Requerimientos tecnicos (Frontend):
@@ -13,9 +14,13 @@
 ##### Requerimientos tecnicos (Backend):
 - Node.js >= v22.18.0
 - Express >= v5.1.0
+- express-handlebars: v >= 8.0.3
+- express-myconnection: v >= 1.0.4
+- express-session: >= 1.18.2
 - Nodemon >= v3.1.10
 - npm >= v10.9.3
-- **Base de datos:** Mongo DB 
+- **Base de datos:** MySQL
+- 
 
 ------------
 
@@ -45,7 +50,6 @@ Instala las dependencias (Desde cmd):
 -> npm Install
 -> npm install --save express 
 -> npm install --save-dev nodemon
-->
 ```
 
 ```
@@ -78,7 +82,7 @@ Ejecuta la aplicacion:
 
 ------------
 #### Contribucion
-- Asegúrate de seguir las buenas prácticas de commits y mantener tu branch actualizado con main.
+- Asegúrate de seguir las buenas prácticas de commits y mantener tu branch actualizado en conjunto con main.
 
 - Reporta cualquier bug o problema mediante la sección de Issues del repositorio.
 
