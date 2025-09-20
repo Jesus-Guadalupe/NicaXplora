@@ -3,7 +3,7 @@ import { CircleUser, TextAlignJustify, X } from 'lucide-react'
 
 const Navbar = () => {
   return <header className='bg-[#ffffff] fixed top-0 w-screen z-10'>
-    <div className='flex justify-around flex-row items-center border-b-2 py-8 hidden'>
+    <div className='flex justify-around flex-row items-center border-b-2 py-8'>
         <div className='text-[#21441e]'>Logo</div>
 
         <div className='opacity-0 md:opacity-100'>
@@ -45,7 +45,8 @@ const Navbar = () => {
         <TextAlignJustify className=''/>
         </button>
     </div>
-        <div id='nav-toggle' className='bg-white w-full h-screen'>
+
+        <div id='nav-toggle' className='bg-white w-full h-screen hidden'>
             <div className='flex justify-between p-4'>
                 <ul className='flex flex-col text-[#21441e] gap-6 font-medium text-3xl ml-4 mt-4'>
                     <a href="/" className=''>
