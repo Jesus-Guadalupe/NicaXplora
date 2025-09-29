@@ -8,15 +8,17 @@ const port = 3100;
 app.use(cors());
 app.use(express.json());
 
-// Importar routers
+// Importar endpoints
 const loginEndpoints = require("./endpoints/login");
 const usuariosEndpoints = require("./endpoints/usuarios");
+const destacadosEndpoints = require("./endpoints/destacadosHome");
 
 // Montar rutas
 app.use("/login", loginEndpoints);
 app.use("/usuarios", usuariosEndpoints);
+app.use("/destacados", destacadosEndpoints);
 
 // Servidor
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+  console.log(`Servidor escuchando en http://localhost:` + port);
 });
