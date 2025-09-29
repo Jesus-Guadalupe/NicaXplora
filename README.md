@@ -1,70 +1,115 @@
 # NicaXplora
 
-##### Descripcion del proyecto:
-<p>NicaXplora es una aplicacion web desarrollada para el HACKATHON Nicaragua 2025, este sitio esta siendo diseñado para ayudar a usuarios tanto nacionales como extranjeros a explorar destinos turisticos en Nicaragua de forma sencilla, interactiva y rapida. Este proyecto tiene como objetivo mejorar la experiencia de los usuarios a descubrir lugares; dando a conocer rutas(Carreteras), tipos de transporte con sus respectivos datos y recomendando sitios de gran valor nacional y en los cuales se pueden vivir experiencias naturalez incomparables.</p>
+##### Descripción del proyecto:
+<p>NicaXplora es una aplicación web desarrollada para HACKATHON Nicaragua 2025, este sitio esta siendo diseñado para ayudar a usuarios tanto nacionales como extranjeros a explorar destinos turisticos en Nicaragua de forma sencilla, interactiva y rápida. Este proyecto tiene como objetivo mejorar la experiencia de los usuarios a descubrir lugares; brindando información de transporte, y recomendando sitios de gran valor nacional en los cuales se pueden vivir experiencias naturalez incomparables.</p>
 
 ------------
-###### ⚠ Se hace del conocimiento de los evaluadores que este proyecto se encuentra en fase de desarrollo, por lo cual este archivo MarckDown podria cambiar si se agregan nuevas dependencias o cualquier tipo de cambio tecnico.
 
 #### Algunos requisitos que necesitas antes de instalar y ejecutar la aplicacion son:
-##### Requerimientos tecnicos (Frontend):
-- React.
-- npx >= v10.9.3
+##### Requerimientos técnicos (Frontend):
+
+- Node.js >= 22.18.0 (para ejecutar y compilar la app React)
+- npm >= 10.9.3
+- React >= 18.2.0
+
+Librerías principales:
+- axios
+- react-icons
+- react-router-dom
+- tailwindcss
+- react-hot-toast
+- lucide-react
 
 ##### Requerimientos tecnicos (Backend):
-- Node.js >= v22.18.0
-- Express >= v5.1.0
-- express-handlebars: v >= 8.0.3
-- express-myconnection: v >= 1.0.4
-- express-session: >= 1.18.2
-- Nodemon >= v3.1.10
-- npm >= v10.9.3
-- **Base de datos:** MySQL
-- 
+- Node.js >= 22.18.0
+- npm >= 10.9.3
+- Express >= 5.1.0
+- MySQL
+
+Librerías principales:
+- bcrypt
+- body-parser
+- cors
+- dotenv
+- express-handlebars
+- express-myconnection
+- express-session
+- jsonwebtoken
+- mysql
+
+##### Dev Tools
+- nodemon (para reinicio automático durante desarrollo)
 
 ------------
 
-#### Instalacion:
+#### Instalación:
 ###### Sigue estos pasos para instalar y ejecutar el proyecto en tu maquina local:
 ```
-Instala node.js desde su sitio oficial:
--> https://nodejs.org/en/download
-```
+1. Requisitos previos
 
+- Node.js y npm instalados: https://nodejs.org/en/download
+
+- MySQL instalado y en funcionamiento
+
+```
 ```
 Clona el repositorio: 
 -> git clone https://github.com/Jesus-Guadalupe/NicaXplora.git
 ```
 
 ```
-Ingresa a la carpeta del proyecto(Desde cmd): 
+Abre el proyecto desde visual studio code y desde la terminal navega hasta la carpeta del proyecto 
 -> cd TuRutaDeClonacion/NicaXplora
 ```
+
 ```
-Una vez en la carpeta del proyecto, inicialo (Desde cmd):
--> git init
+Una vez con el proyecto abierto debes instalar las dependencias necesarias, navega hasta la carpeta backend
+-> cd nicaxplora/backend
 ```
 
 ```
-Instala las dependencias (Desde cmd): 
--> npm Install
--> npm install --save express 
--> npm install --save-dev nodemon
+Instala las dependencias backend necesarias(asegurate estar en la carpeta backend): 
+-> npm install
 ```
 
 ```
-Configura las variables del entorno desde tu motor de codigo:
--> Crea un archivo ".env"
+Luego instala las dependencias frontend necesarias(Sal del backend y navega hasta la carpeta frontend) y ejecuta: 
+-> npm install
+```
 
--> Ingresa  credenciales (Como ejemplo): 
-API_KEY=tu_api_key
-DB_URL=tu_url_de_base_de_datos
+```
+Crear la estructura de base de datos:
+-> En la estructura del proyecto, abre el archivo db-estructure.sql y copia el código
+-> En MySQL crea una nueva base de datos y en un nuevo scrypt pega y ejecuta ese código
+```
+
+```
+Luego regresa a visual studio code y configura las variables de entorno:
+-> Crea un archivo ".env" en la carpeta backend
+
+-> Ingresa  credenciales: 
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=tu_password
+DB_NAME=dbnicaxplora
+
+-> Debes reemplazar los datos por los que tu definiste en el proceso de creación de la base de datos en MySQL.
 
 ```
 
 ```
-Ejecuta la aplicacion: 
--> npm start
+Ejecuta la aplicación: 
+-> Abre una primera terminal y navega hasta la carpeta backend:
+cd nicaxplora/backend
+
+-> Ejecuta npm start
+```
+
+```
+-> Luego abre una segunda terminal y navega hasta la carpeta frontend(Dejando la primera terminal en funcionamiento):
+cd nicaxplora/frontend
+
+-> Ejecuta npm run dev
 ```
 
 ###### Y con eso estas listo, tienes todo lo necesario para empezar!
@@ -78,7 +123,7 @@ Ejecuta la aplicacion:
 
 - **Explora las funcionalidades:** Ver destinos, Ver Rutas de transporte, entre otras...
 
-- Para contribuir, crea un branch con tu feature y envía un pull request al repositorio principal.
+- Para contribuir, crea un branch local con tu feature y envía un pull request al repositorio principal de github.
 
 ------------
 #### Contribucion
@@ -90,8 +135,11 @@ Ejecuta la aplicacion:
 #### Futuras mejoras
 
 - Mejorar diseño responsivo
-- Añador distintos idiomas
-- Informacion a traves de realidad aumentada
+- Añadir nuevas ciudades y destinos
+- Potenciar el chat por IA
+- Añadir distintos idiomas
+- Modo oscuro
+
 -------------
 #### Licencia 
 <p>Este proyecto está bajo la licencia MIT.
