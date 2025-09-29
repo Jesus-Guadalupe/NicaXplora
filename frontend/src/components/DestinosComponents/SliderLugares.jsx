@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import CardLugaresDep from './CardLugaresDep';
 
-export default function SliderLugares(){
+export default function SliderLugares( {destinos} ){
 
     var settings = {
     dots: false,
@@ -16,7 +16,9 @@ export default function SliderLugares(){
   return (
     <div className='mt-8 p-2'>
                   <Slider {...settings}>
-                        {/*ACÁ VAN LAS CARDS DE LOS LUGARES Y SUS NOMBRES */}
+                        {destinos.map(dest => {
+                          return <CardLugaresDep key={dest.id} dest={dest}/>
+                        })}
                   </Slider>
                   
               </div>
