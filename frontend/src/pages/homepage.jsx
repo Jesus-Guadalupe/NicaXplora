@@ -4,8 +4,7 @@ import { MapPinIcon, Search, Star } from 'lucide-react'
 import CardHome from '../components/CardHome'
 
 const Homepage = () => {
-
-
+  
   return <>
   <Navbar/>
   {/*=======PRIMER SECTION DEL HOMEPAGE========*/}
