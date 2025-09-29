@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar'
 import { MapPinIcon, Search, Star } from 'lucide-react'
 import CardHome from '../components/CardHome'
+import axios from 'axios';
 
 const Homepage = () => {
+
+  //Recibe datos a traves del endpoint
+  const [destinos, setdestinos] = useState([])
+
+  useEffect(() => {
+    axios.get("http://localhost:3100/destacados")
+    .then(res => setdestinos(res.data))
+    .catch(err => console.error("Error al cargar el destino: ", err))
+  }, [])
+
   
   return <>
   <Navbar/>
@@ -39,6 +50,19 @@ const Homepage = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem] justify-items-center'>
             {/*==========AQUÍ VAN LAS CARDS CON CIUDADES RECOMENDADOS========*/}
+
+            {/* Valida los datos para que se devuelva la informacion correspondiente de cada destino */}
+            {destinos.map(destino => (
+              <CardHome 
+              key={destino.id}
+              name={destino.name}
+              city={destino.city}
+              description={destino.description}
+              image={destino.image_url}
+              activities={destino.activities}
+              category={destino.category}
+              />
+            ))}
 
                   {/* EJEMPLO DE CARD */}
                   <CardHome/>
