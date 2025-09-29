@@ -1,13 +1,14 @@
 import React from 'react'
 
-const CardLugaresDep = () => {
+const CardLugaresDep = ( {dest} ) => {
   return (
-    <div className='bg-[#ebebeb] shadow-lg p-4 rounded-md'>
-        <img src="/Granada.jpg" alt="" className='object-cover w-[300px] h-[150px]'/>
-        <div className='p-2'>
-            <h1 className='text-2xl font-medium pb-4'>{/*Nombre del lugar */}</h1>
-        </div>
-    </div>
+    <div className='bg-gray-100 shadow-md rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300'>
+  <img src={dest.image_url} alt={dest.name} className='w-full h-28 object-cover'/>
+  <div className='p-2 text-center'>
+    <h1 className='text-sm font-medium truncate'>{dest.name}</h1>
+  </div>
+</div>
+
   )
 }
 

@@ -12,11 +12,13 @@ app.use(express.json());
 const loginEndpoints = require("./endpoints/login");
 const usuariosEndpoints = require("./endpoints/usuarios");
 const destacadosEndpoints = require("./endpoints/destacadosHome");
+const destinosEndpoints = require("./endpoints/destinos");
 
 // Montar rutas
 app.use("/login", loginEndpoints);
 app.use("/usuarios", usuariosEndpoints);
 app.use("/destacados", destacadosEndpoints);
+app.use("/destinos", destinosEndpoints);
 
 // Servidor
 app.listen(port, () => {

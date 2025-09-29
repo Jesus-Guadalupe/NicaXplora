@@ -11,7 +11,7 @@ create table users
     country varchar(100) not null
 );
 
-create table destinations 
+create table destinations x
 (
     id int auto_increment primary key not null,
     name varchar(100) not null,

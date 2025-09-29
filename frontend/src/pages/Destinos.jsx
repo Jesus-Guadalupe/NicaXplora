@@ -1,90 +1,93 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar'
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick'
 import SliderLugares from '../components/DestinosComponents/SliderLugares';
 
 const Destinos = () => {
-  
-  function simpleSlider(){
-    var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  }
+  const [destinos, setDestinos] = useState([]);
 
-  return <>
-    <Navbar/>
+  useEffect(() => {
+    fetch("http://localhost:3100/destinos") // endpoint backend
+      .then(res => res.json())
+      .then(data => setDestinos(data))
+      .catch(err => console.error("Error cargando destinos:", err));
+  }, []);
 
-    {/*==========PRIMERA SECTION DE DESTINOS========= */}
-    <div className=' mt-10 bg-gradient-to-t from-[#4294C7] to-[#21441E] h-[40rem] flex justify-center'>
-        <div className=' flex flex-col justify-center items-center text-white'>
+  return (
+    <>
+      <Navbar/>
 
-            <h1 className='text-6xl font-sans font-medium'>
-              Descubre Nicaragua por Departamentos
-            </h1>
-
-            <p className='font-thin text-xl mt-4'>
-              Explora los mejores destinos organizados por regiones
-            </p>
+      {/* Header */}
+      <div className='mt-10 bg-gradient-to-t from-[#4294C7] to-[#21441E] h-[40rem] flex justify-center items-center text-center'>
+        <div className='flex flex-col justify-center items-center text-white'>
+          <h1 className='text-6xl font-bold tracking-wide'>
+            Descubre Nicaragua por Departamentos
+          </h1>
+          <p className='font-light text-xl mt-4 max-w-xl'>
+            Explora los mejores destinos organizados por regiones y encuentra actividades, horarios y precios.
+          </p>
         </div>
-    </div>
-
-    {/*=============SEGUNDA SECTION DE DEStINOS========== */}
-
-    <div className='min-h-screen h-auto p-[8rem] flex justify-center'>
-
-      <div className='w-11/12 flex flex-col justify-center items-center gap-8'>
-
-          <div className=' bg-slate-50 w-11/12 p-[4rem] rounded-lg shadow-xl flex flex-col justify-between'>
-              <div className='flex flex-row justify-between'>
-                  <div className='flex flex-col justify-between w-full max-w-[45rem]'>
-
-                    <div>
-                        <h1 className='font-bold text-4xl'>
-                          Granada
-                        </h1>
-                        <p className='text-slate-500 mt-2 text-lg'>
-                          Descripcion breve de la ciudad
-                        </p>
-                    </div>
-
-                    <div className='flex flex-row justify-between mt-4 items-center'>
-                    
-                        <div className='flex-row flex items-center'>
-                          <IoIosStar color='#21441e' className='size-8'/>
-                          <p className='font-medium ml-2 text-3xl'>4.8</p>
-                        </div>
-                    
-                        <div className='flex flex-row items-center'>
-                          <PiMapPinFill color='#21441e' className='size-8'/>
-                          <p className='text-2xl font-thin ml-2'>171km desde Estelí</p>
-                        </div>
-                    
-                    </div>
-
-                  </div>
-
-                  <img src="/Granada.jpg" alt=""  className='w-1/3 rounded-lg'/>
-              </div>
-
-              <SliderLugares/>
-          </div>
-          
       </div>
 
+      {/* Listado dinámico */}
+      <div className='min-h-screen h-auto p-[6rem] flex flex-col gap-12 items-center'>
+        {destinos.map(dest => (
+          
+          <div key={dest.id} className='bg-white w-11/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden'>
+            
+            {/* Imagen */}
+            <div className='md:w-1/3 relative'>
+              <img src={dest.image_url} alt={dest.name} className='w-full h-full object-cover'/>
+              <span className='absolute top-4 left-4 bg-[#35792f] text-white px-3 py-1 rounded-full font-medium text-sm'>
+                {dest.city}
+              </span>
+              <span className='absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full font-medium text-sm'>
+                {dest.category}
+              </span>
+            </div>
 
+            {/* Contenido */}
+            <div className='md:w-2/3 p-6 flex flex-col justify-between gap-4'>
+              <div>
+                <h2 className='text-3xl font-bold'>{dest.name}</h2>
+                <p className='text-gray-600 mt-2 line-clamp-3'>{dest.description}</p>
 
+                {dest.activities && (
+                  <p className='text-gray-500 mt-3 text-sm'>
+                    <span className='font-medium'>Actividades:</span> {dest.activities}
+                  </p>
+                )}
+              </div>
 
+              {/* Horarios y precio */}
+              <div className='flex justify-between mt-4 text-sm text-gray-700'>
+                <span>Horario: {dest.opening_hours}</span>
+                <span>Entrada: ${dest.entry_price}</span>
+              </div>
 
-    </div>
-  </>
+              {/* Valoración y ubicación */}
+              <div className='flex justify-between items-center mt-3'>
+                <div className='flex items-center gap-2'>
+                  <IoIosStar color="#facc15" size={20}/>
+                  <span className='font-medium'>4.8</span>
+                </div>
+                <div className='flex items-center gap-2 text-gray-700'>
+                  <PiMapPinFill size={20}/>
+                  <span>{dest.city}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Slider de lugares relacionados */}
+            <div className='w-full'>
+              <SliderLugares destinos={[dest]} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )
 }
 
-export default Destinos
+export default Destinos;
