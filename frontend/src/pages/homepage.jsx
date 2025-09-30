@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import { MapPinIcon, Search, Star } from 'lucide-react'
 import CardHome from '../components/CardHome'
 import axios from 'axios';
+import Chatbot from '../components/Chatbot/Chatbot';
 
 const Homepage = () => {
 
@@ -69,7 +70,7 @@ const Homepage = () => {
             </div>
         </div>
     </div>
-
+  <Chatbot/>
   </>
 }
 

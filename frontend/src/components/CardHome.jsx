@@ -1,9 +1,14 @@
 import React from 'react'
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { useState } from 'react';
 
 const CardHome = ({ name, city, description, image, category, 
   activities, entry_price, opening_hours }) => {
+
+  //useState para boton de favoritos
+      const [isFavorite, setIsFavorite] = useState(false);
 
   return (
     <div className='bg-slate-300 rounded-xl max-w-[24rem] min-w-72 shadow-lg cursor-pointer hover:translate-y-[-4px] transition-all relative'>
@@ -11,6 +16,13 @@ const CardHome = ({ name, city, description, image, category,
       {/* Ciudad */}
       <div className='bg-[#35792f] py-2 px-4 rounded-full absolute top-2 left-2'>
         <p className='text-white font-medium'>{city}</p>
+      </div>
+
+      {/*FUNCIONALIDAD DE BOTON FAVORITOS */}
+      <div className='absolute top-4 right-4'>
+        <button onClick={() => setIsFavorite(!isFavorite)}>
+          {isFavorite? (<FaHeart size={30} color='#35792f'/>) : (<FaRegHeart size={30} color='#35792f'/>)}
+        </button>
       </div>
 
       {/* Imagen */}

@@ -1,5 +1,8 @@
 import React from 'react'
 import SliderLugares from './SliderLugares'
+import { IoIosStar } from "react-icons/io";
+import { PiMapPinFill } from "react-icons/pi";
+import Comentarios from './Comentarios';
 
 const CardDepartamento = () => {
   return (
@@ -38,7 +41,6 @@ const CardDepartamento = () => {
                   </div>
     
                     <SliderLugares/>
-    
               </div>
           </div>
   )
