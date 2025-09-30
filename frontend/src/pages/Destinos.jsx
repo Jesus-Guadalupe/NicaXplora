@@ -3,7 +3,6 @@ import Navbar from '../components/navbar'
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
 import SliderLugares from '../components/DestinosComponents/SliderLugares';
-import Comentarios from '../components/DestinosComponents/Comentarios';
 
 
 const Destinos = () => {
