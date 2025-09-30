@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <header className='bg-[#ffffff] fixed top-0 w-screen z-10'>
       <div className='flex justify-around flex-row items-center border-b-2 py-8'>
-          <div className='text-[#21441e]'>Logo</div>
+          <div className='text-[#21441e]'><img src="/Logo_nicaxplora.png" alt=""  className='w-[80%] px-4 lg:w-[40%] lg:px-0'/></div>
 
           <div className='opacity-0 md:opacity-100'>
               <ul className='flex flex-row text-[#21441e] gap-6 font-medium text-lg'>
