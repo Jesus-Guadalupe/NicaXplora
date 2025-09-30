@@ -1,75 +1,66 @@
-import React from 'react'
-import { Bot, User, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState } from "react";
 
-const Chatbot = () => {
+export default function Chatbot() {
+  const [messages, setMessages] = useState([
+    { from: "bot", text: "¡Hola! 👋 Soy tu asistente de NicaXplora. ¿Qué deseas consultar?" },
+  ]);
 
-    {/*useState para abrir contenedor de chatbot */}
-        const [isOpen, setIsOpen] = useState(false);
+  // Opciones predeterminadas del usuario
+  const options = [
+    { label: "🗺️ Ver destinos", response: "Aquí tienes los destinos turísticos más destacados de Nicaragua, desde León hasta Granada." },
+    { label: "🚌 Transporte", response: "Contamos con información de rutas interdepartamentales y transporte urbano." },
+    { label: "⭐ Favoritos", response: "Puedes guardar destinos en tu lista de favoritos para consultarlos luego." },
+  ];
 
-  return <>
-        {/*Boton para abrir contenedor de chat */}
-        <div className='justify-end flex fixed right-6 bottom-6 lg:right-16 lg:bottom-16'>
-            <button onClick={() => setIsOpen(!isOpen)} className='bg-[#21441E] p-4 rounded-full flex items-center hover:bg-[#378530] hover:translate-y-[-4px] transition-all'><Bot color='white' size={60}/></button>
-        </div>
+  const sendMessage = (option) => {
+    // Añadir mensaje del usuario
+    setMessages((prev) => [...prev, { from: "user", text: option.label }]);
 
+    // Simular respuesta del bot
+    setTimeout(() => {
+      setMessages((prev) => [...prev, { from: "bot", text: option.response }]);
+    }, 600);
+  };
 
-{isOpen &&(
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+  return (
+    <div className="fixed bottom-5 right-5 w-80 bg-white shadow-xl rounded-2xl border border-gray-200 flex flex-col overflow-hidden">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-3 text-center font-semibold">
+        🤖 Chat NicaXplora
+      </div>
 
-            <div className='bg-[#f6ffff] rounded-lg shadow-xl lg:max-w-[700px] lg:w-full absolute'>
-
-                {/*HEADER DE COMPONENTE CHATBOT*/}
-                <div className='bg-[#21441E] text-white flex items-center gap-4 p-4 rounded-t-lg justify-between'>
-                    <Bot color='white' size={40}/>
-                    <p className='text-4xl font-medium'>Chatbot</p>
-
-                    {/*Boton de cerrar*/}
-                    <button onClick={() => setIsOpen(!isOpen)}>
-                        <X size={40}/>
-                    </button>
-                </div>
-                    
-                        {/*MENSAJE DEL BOT */}
-                    <div className='gap-2 flex items-center p-4'>
-                        <div className='bg-[#21441E] p-3 rounded-full'>
-                            <Bot color='white' size={40}/>
-                        </div>
-
-                        <div className=''>
-                            <span className='bg-[#21441E] flex p-5 text-white font-medium text-lg rounded-lg mt-2'>
-                                MENSAJE DEL BOT
-                            </span>
-                        </div>
-                    </div>
-
-                        {/*MENSAJE DEL USUARIO*/}
-                    <div className='gap-2 flex items-center justify-end p-4'>
-                        <div className=''>
-                            <span className='bg-[#bbb2a1] text-white p-5 flex font-medium text-lg rounded-lg'>
-                                MENSAJE DEL USUARIO
-                            </span>
-                        </div>
-                        
-                        <div className='bg-[#bbb2a1] p-3 rounded-full'>
-                            <User color='white' size={40}/>
-                        </div>
-                    </div>
-
-                    {/*Contenedor de preguntas*/}
-                    <div className=' flex justify-center items-center gap-2 flex-col m-4 py-2'>
-                            {/*Preguntas*/}
-                        <button className='bg-[#acdac6] w-full mt-4 rounded-md text-[#21441E] p-4 hover:bg-[#5b9c60] active:translate-y-[4px] transition-all shadow-lg'>
-                            <span className='text-lg p-2 font-semibold'>
-                                Pregunta 1
-                            </span>
-                        </button>
-                    </div>
-                   
+      {/* Mensajes */}
+      <div className="flex-1 p-3 space-y-3 overflow-y-auto max-h-80 bg-gray-50">
+        {messages.map((msg, idx) => (
+          <div
+            key={idx}
+            className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}
+          >
+            <div
+              className={`px-4 py-2 rounded-2xl text-sm shadow-sm ${
+                msg.from === "user"
+                  ? "bg-green-500 text-white rounded-br-none"
+                  : "bg-white text-gray-800 border border-gray-200 rounded-bl-none"
+              }`}
+            >
+              {msg.text}
             </div>
-        </div>
-       )}
-  </>
-}
+          </div>
+        ))}
+      </div>
 
-export default Chatbot
+      {/* Botones predeterminados */}
+      <div className="border-t border-gray-200 p-2 bg-gray-100 flex flex-wrap gap-2 justify-center">
+        {options.map((opt, idx) => (
+          <button
+            key={idx}
+            className="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1 rounded-full shadow-sm transition"
+            onClick={() => sendMessage(opt)}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}

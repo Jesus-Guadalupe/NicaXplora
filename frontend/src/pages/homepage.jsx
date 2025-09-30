@@ -47,7 +47,7 @@ const Homepage = () => {
     {/*=======SEGUNDA SECTION DEL HOMEPAGE========*/}
     <div className='min-h-screen h-screen flex justify-center p-[8rem]'>
         <div className='flex flex-col items-center'>
-            <h1 className='font-bold lg:text-5xl text-[#21441e] text-4xl text-center'>Destinos destacados</h1>
+            <h1 className='font-bold lg:text-5xl text-[black] text-4xl text-center'>Destinos destacados</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem] justify-items-center'>
             {/*==========AQUÍ VAN LAS CARDS CON CIUDADES RECOMENDADOS========*/}
