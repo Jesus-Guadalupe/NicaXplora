@@ -87,8 +87,6 @@ const Destinos = () => {
             </div>
           </div>
         ))}
-
-        <Comentarios/>
       </div>
     </>
   )
