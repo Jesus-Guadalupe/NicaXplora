@@ -12,10 +12,10 @@ const BusquedaTransDep = () => {
 
             {/*============= Buscador de trasporte por departamento========== */}
             <div className='w-full flex flex-col items-center'>
-                    <div className='bg-slate-50 shadow-lg w-10/12 flex flex-row gap-4 items-center justify-between p-6 rounded-xl mt-6'>
+                    <div className='bg-slate-50 shadow-lg w-10/12 flex flex-row gap-4 items-center justify-between p-6 rounded-xl mt-6' style={{ backgroundColor: "#1A1A1A" }}>
                             <div className='w-[40%]'>
                                 <p className='font-semibold ml-3'>Desde</p>
-                                <select name="Seleccionar Origen" id="" className='w-10/12 border p-4 rounded-lg text-slate-500 focus:outline-[#69c7ba]'>
+                                <select name="Seleccionar Origen" id="" className='w-10/12 border p-4 rounded-lg text-slate-500 focus:outline-[#69c7ba]' style={{ backgroundColor: "#424242" }}>
                                     <option value="">Estelí</option>
                                     <option value="">Granada</option>
                                     <option value="">Ocotal</option>
@@ -24,7 +24,7 @@ const BusquedaTransDep = () => {
 
                             <div className='w-[40%]'>
                                 <p className='font-semibold ml-3'>Hasta</p>
-                                <select name="Destino" id="" className='w-10/12 border p-4 rounded-lg text-slate-500 focus:outline-[#69c7ba]'>
+                                <select name="Destino" id="" className='w-10/12 border p-4 rounded-lg text-slate-500 focus:outline-[#69c7ba]' style={{ backgroundColor: "#424242" }}>
                                     <option value="">Estelí</option>
                                     <option value="">Granada</option>
                                     <option value="">Ocotal</option>

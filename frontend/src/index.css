@@ -11,6 +11,11 @@ body {
     background-position: center;  /* centrado */
 }
 
+body {
+  @apply bg-black text-white;
+}
+
+
 /* Slick Carousel ajustes */
 .slick-slide > div{
     margin: 0 10px;

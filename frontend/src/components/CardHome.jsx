@@ -6,10 +6,13 @@ const CardHome = ({ name, city, description, image, category,
   activities, entry_price, opening_hours }) => {
 
   return (
-    <div className='bg-slate-300 rounded-xl max-w-[24rem] min-w-72 shadow-lg cursor-pointer hover:translate-y-[-4px] transition-all relative'>
+    <div 
+      className='rounded-xl max-w-[24rem] min-w-72 shadow-lg cursor-pointer hover:translate-y-[-4px] transition-all relative'
+      style={{ backgroundColor: "#1A1A1A" }} // Fondo negro profundo
+    >
 
       {/* Ciudad */}
-      <div className='bg-[#35792f] py-2 px-4 rounded-full absolute top-2 left-2'>
+      <div className='py-2 px-4 rounded-full absolute top-2 left-2' style={{ backgroundColor: "#21441e" }}>
         <p className='text-white font-medium'>{city}</p>
       </div>
 
@@ -17,35 +20,39 @@ const CardHome = ({ name, city, description, image, category,
       <img src={image} alt={name} className='w-full h-[200px] object-cover rounded-t-xl'/>
 
       {/* Contenido */}
-      <div className='bg-white p-4 rounded-b-xl flex flex-col gap-2'>
+      <div className='p-4 rounded-b-xl flex flex-col gap-2'>
 
         {/* Nombre */}
-        <h1 className='text-2xl md:text-3xl font-sans font-semibold'>{name}</h1>
+        <h1 className='text-2xl md:text-3xl font-sans font-semibold text-white'>{name}</h1>
 
         {/* Categoría */}
-        <p className='text-sm text-[#21441e] font-medium'>Categoría: <span className='font-normal'>{category}</span></p>
+        <p className='text-sm font-medium' style={{ color: "#5aa794" }}>
+          Categoría: <span className='font-normal text-white'>{category}</span>
+        </p>
 
         {/* Actividades */}
-        <p className='text-sm text-[#21441e] font-medium'>Actividades: <span className='font-normal'>{activities}</span></p>
+        <p className='text-sm font-medium' style={{ color: "#5aa794" }}>
+          Actividades: <span className='font-normal text-white'>{activities}</span>
+        </p>
 
         {/* Descripción */}
-        <p className='text-slate-500 text-sm md:text-base'>{description}</p>
+        <p className='text-sm md:text-base text-white/80'>{description}</p>
 
         {/* Precios y horarios */}
-        <div className='flex flex-row justify-between mt-2 text-sm md:text-base text-[#21441e]'>
-          <p>Precio: <span className='font-medium'>${entry_price}</span></p>
-          <p>Horario: <span className='font-medium'>{opening_hours}</span></p>
+        <div className='flex flex-row justify-between mt-2 text-sm md:text-base' style={{ color: "#5aa794" }}>
+          <p>Precio: <span className='font-medium text-white'>${entry_price}</span></p>
+          <p>Horario: <span className='font-medium text-white'>{opening_hours}</span></p>
         </div>
 
         {/* Footer con íconos (estrellas y ubicación) */}
         <div className='flex flex-row justify-between mt-4'>
           <div className='flex flex-row items-center'>
-            <IoIosStar color='#21441e' className='scale-125'/>
-            <p className='font-medium ml-1'>{/*Valoración futura*/}</p>
+            <IoIosStar color='#5aa794' className='scale-125'/>
+            <p className='font-medium ml-1 text-white'>{/* Valoración futura */}</p>
           </div>
           <div className='flex flex-row items-center'>
-            <PiMapPinFill color='#21441e' className='scale-125'/>
-            <p className='text-sm font-thin'>{city}</p>
+            <PiMapPinFill color='#5aa794' className='scale-125'/>
+            <p className='text-sm font-thin text-white'>{city}</p>
           </div>
         </div>
 

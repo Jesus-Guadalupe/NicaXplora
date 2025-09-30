@@ -54,8 +54,8 @@ function Signup({ onSwitch }) {
           "url('https://images.pexels.com/photos/1292115/pexels-photo-1292115.jpeg?_gl=1*1apjsut*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyMDA5NjgkbzE3JGcxJHQxNzU5MjAxMzQ5JGoyNSRsMCRoMA..')",
       }}
     >
-      <div className="p-6 bg-white/90 backdrop-blur-md rounded-xl shadow-md w-1/5 text-center">
-        <h1 className="text-4xl font-sans font-bold text-[#346530] mb-8">NICAXPLORA</h1>
+      <div className="p-6 bg-white/90 backdrop-blur-md rounded-xl shadow-md w-1/5 text-center" style={{ backgroundColor: "#141414 " }}>
+        <h1 className="text-4xl font-sans font-bold text-[#348050] mb-8">NICAXPLORA</h1>
 
         <div className="flex flex-row mb-8 rounded-full">
           <button
@@ -72,28 +72,28 @@ function Signup({ onSwitch }) {
         <input
           type="text"
           placeholder="Nombre"
-          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
         />
         <input
           type="email"
           placeholder="Email"
-          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newEmail}
           onChange={(e) => setNewEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Contraseña"
-          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
         />
         <input
           type="text"
           placeholder="País"
-          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newCountry}
           onChange={(e) => setNewCountry(e.target.value)}
         />
