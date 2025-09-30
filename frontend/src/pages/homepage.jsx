@@ -31,11 +31,11 @@ const Homepage = () => {
               Descubre destinos únicos, planifica rutas y vive experiencias inolvidables
             </p>
 
-            <div className='bg-white py-4 text-[#21441e] mt-4 flex flex-row items-center gap-4 px-8 w-11/12 justify-between rounded-md'>
+            <div className='bg-black py-4 text-[white] mt-4 flex flex-row items-center gap-4 px-8 w-11/12 justify-between rounded-md'>
                 <div>
                   <Search className='scale-125'/>
                 </div>
-                <input type="text" placeholder='¿A donde quieres ir? Ej: Granada, Ometepe, Masaya...' className='text-[#21442e] w-full px-2 py-2 placeholder:font-thin focus:outline-none'/>
+                <input type="text" placeholder='¿A donde quieres ir? Ej: Granada, Ometepe, Masaya...' className='text-[#white] w-full px-2 py-2 placeholder:font-thin focus:outline-none' style={{ backgroundColor: "#262323ff" }}/>
                 <button className='bg-[#21441e] rounded-md py-2 w-60 text-white hover:bg-[#122b30] hover:shadow-lg active:translate-y-[2px] transition-all'>
                   Buscar
                 </button>

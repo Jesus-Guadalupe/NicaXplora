@@ -10,7 +10,7 @@ const Rutas = () => {
     <>
       <Navbar />
 
-      {/*============= HEADER RUTAS============ */}
+      {/* HEADER */}
       <div className='mt-10 bg-gradient-to-tr from-[#4294C7] via-[#69C7BA] to-[#21441E] h-[40rem] flex justify-center items-center'>
         <div className='flex flex-col justify-center items-center text-white gap-6 text-center px-6'>
           <h1 className='text-6xl font-extrabold drop-shadow-lg tracking-tight animate-fade-in'>
@@ -44,8 +44,8 @@ const Rutas = () => {
         </div>
       </div>
 
-      {/*============= SECCION TRANSPORTE ============ */}
-      <div className='w-full min-h-screen bg-gray-50 px-6 py-12'>
+      {/* SECCION TRANSPORTE */}
+      <div className='w-full min-h-screen px-6 py-12 bg-transparent'>
         <Transporte />
       </div>
     </>

@@ -3,11 +3,8 @@ import Navbar from '../components/navbar'
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
 import SliderLugares from '../components/DestinosComponents/SliderLugares';
-import Comentarios from '../components/DestinosComponents/Comentarios';
 
-
-
-const Destinos = () => {
+  const Destinos = () => {
   const [destinos, setDestinos] = useState([]);
 
   useEffect(() => {
@@ -37,12 +34,14 @@ const Destinos = () => {
       <div className='min-h-screen h-auto p-[6rem] flex flex-col gap-12 items-center'>
         {destinos.map(dest => (
           
-          <div key={dest.id} className='bg-white w-11/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden'>
+          <div key={dest.id} 
+               className='w-11/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden' 
+               style={{ backgroundColor: "#141414" }}>
             
             {/* Imagen */}
             <div className='md:w-1/3 relative'>
               <img src={dest.image_url} alt={dest.name} className='w-full h-full object-cover'/>
-              <span className='absolute top-4 left-4 bg-[#35792f] text-white px-3 py-1 rounded-full font-medium text-sm'>
+              <span className='absolute top-4 left-4 bg-[#21441e] text-white px-3 py-1 rounded-full font-medium text-sm'>
                 {dest.city}
               </span>
               <span className='absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full font-medium text-sm'>
@@ -53,30 +52,30 @@ const Destinos = () => {
             {/* Contenido */}
             <div className='md:w-2/3 p-6 flex flex-col justify-between gap-4'>
               <div>
-                <h2 className='text-3xl font-bold'>{dest.name}</h2>
-                <p className='text-gray-600 mt-2 line-clamp-3'>{dest.description}</p>
+                <h2 className='text-3xl font-bold text-white'>{dest.name}</h2>
+                <p className='mt-2 line-clamp-3 text-white/80'>{dest.description}</p>
 
                 {dest.activities && (
-                  <p className='text-gray-500 mt-3 text-sm'>
-                    <span className='font-medium'>Actividades:</span> {dest.activities}
+                  <p className='mt-3 text-sm' style={{ color: "#5aa794" }}>
+                    <span className='font-medium text-white'>Actividades:</span> {dest.activities}
                   </p>
                 )}
               </div>
 
               {/* Horarios y precio */}
-              <div className='flex justify-between mt-4 text-sm text-gray-700'>
-                <span>Horario: {dest.opening_hours}</span>
-                <span>Entrada: ${dest.entry_price}</span>
+              <div className='flex justify-between mt-4 text-sm' style={{ color: "#5aa794" }}>
+                <span className='text-white'>Horario: {dest.opening_hours}</span>
+                <span className='text-white'>Entrada: ${dest.entry_price}</span>
               </div>
 
               {/* Valoración y ubicación */}
               <div className='flex justify-between items-center mt-3'>
                 <div className='flex items-center gap-2'>
-                  <IoIosStar color="#facc15" size={20}/>
-                  <span className='font-medium'>4.8</span>
+                  <IoIosStar color="#5aa794" size={20}/>
+                  <span className='font-medium text-white'>4.8</span>
                 </div>
-                <div className='flex items-center gap-2 text-gray-700'>
-                  <PiMapPinFill size={20}/>
+                <div className='flex items-center gap-2 text-white/80'>
+                  <PiMapPinFill color="#5aa794" size={20}/>
                   <span>{dest.city}</span>
                 </div>
               </div>
@@ -88,8 +87,7 @@ const Destinos = () => {
             </div>
           </div>
         ))}
-
-        <Comentarios/>
+        
       </div>
     </>
   )

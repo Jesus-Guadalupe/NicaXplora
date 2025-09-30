@@ -4,9 +4,9 @@ import { TbMapCheck } from "react-icons/tb";
 
 const DashFavorites = () => {
   return (
-    <div className='w-full flex flex-row gap-4 justify-center'>
+    <div className='w-full flex flex-row gap-4 justify-center' >
 
-          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center'>
+          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center' style={{ backgroundColor: "#1A1A1A" }}>
             <div className='flex lg:flex-row items-center'>
 
               <FaHeart color='#346430' className='size-[3rem]'/>
@@ -22,7 +22,7 @@ const DashFavorites = () => {
 
           </div>
 
-          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center'>
+          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center' style={{ backgroundColor: "#1A1A1A" }}>
             <div className='flex flex-row items-center'>
 
               <TbMapCheck color='#346430' className='size-[3rem]'/>
@@ -38,7 +38,7 @@ const DashFavorites = () => {
               
           </div>
 
-          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center'>
+          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center' style={{ backgroundColor: "#1A1A1A" }}>
             <div className='flex flex-row items-center'>
 
               <FaList color='#346430' className='size-[3rem]' />

@@ -15,7 +15,7 @@ const Favoritos = () => {
 
     {/*===========PRIMER SECTION FAVORITOS========== */}
     <div className=' mt-10 bg-gradient-to-t from-[#4294C7] to-[#21441E] h-[40rem] flex justify-center'>
-        <div className=' flex flex-col justify-center items-center text-white'>
+        <div className=' flex flex-col justify-center items-center text-white' >
 
             <h1 className='text-6xl font-sans font-medium'>
               Mis favoritos
@@ -28,7 +28,7 @@ const Favoritos = () => {
     </div>
 
     {/*=============SEGUNDA SECTION FAVORITOS========== */}
-    <div className=' min-h-screen h-screen p-[8rem] w-full'>
+    <div className=' min-h-screen h-screen p-[8rem] w-full' >
       <DashFavorites/>
 
           {/*BOTONES DE FILTRO*/}
@@ -37,8 +37,8 @@ const Favoritos = () => {
           {/*======MOSTRAR COMPONENTE "No se encontraron favoritos"=========*/}
             {Cards.length === 0 && <NotFavorites/>}
 
-            <div className='flex flex-col items-center'>
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem]'>
+            <div className='flex flex-col items-center' >
+              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem]' >
                 
                 {/*=======ACÁ VAN LAS CARDS======== */}
                   

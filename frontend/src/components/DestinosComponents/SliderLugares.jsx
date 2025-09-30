@@ -1,6 +1,8 @@
 import React from 'react'
 import Slider from 'react-slick'
 import CardLugaresDep from './CardLugaresDep';
+import Comentarios from './Comentarios';
+
 
 export default function SliderLugares( {destinos} ){
 
@@ -14,13 +16,9 @@ export default function SliderLugares( {destinos} ){
   };
 
   return (
-    <div className='mt-8 p-2'>
-                  <Slider {...settings}>
-                        {destinos.map(dest => {
-                          return <CardLugaresDep key={dest.id} dest={dest}/>
-                        })}
-                  </Slider>
-                  
+    <div className=''>
+                                   <Comentarios/>
               </div>
+
   )
 }
