@@ -31,7 +31,7 @@ const Destinos = () => {
           </p>
         </div>
       </div>
-    
+
       {/* Listado dinámico */}
       <div className='min-h-screen h-auto p-[6rem] flex flex-col gap-12 items-center'>
         {destinos.map(dest => (
@@ -87,6 +87,8 @@ const Destinos = () => {
             </div>
           </div>
         ))}
+
+        <Comentarios/>
       </div>
     </>
   )
