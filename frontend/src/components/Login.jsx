@@ -19,29 +19,29 @@ function Login({ onSwitch }) {
     axios
       .post("http://localhost:3100/login", body)
       .then(({ data }) => {
-        // Redirigimos al homepage SOLO si el login(credenciales) es correcto
         console.log("Todo salió bien:", data);
-
-        //Se guarda el usuario logueado
-        console.log("Usuario recibido:", data);
         localStorage.setItem("user", JSON.stringify(data));
         navigate("/Homepage");
       })
       .catch((err) => {
-        // Aquí si el login es incorrecto ya no redirigimos, mostramos error
         console.error("Error en login:", err.response?.data || err.message);
         alert(err.response?.data?.message || "Usuario o contraseña inválidos");
       });
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gray-100">
-      <div className="p-6 bg-white rounded-xl shadow-md w-1/5 text-center">
+    <div
+      className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url('https://images.pexels.com/photos/1292115/pexels-photo-1292115.jpeg?_gl=1*1apjsut*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyMDA5NjgkbzE3JGcxJHQxNzU5MjAxMzQ5JGoyNSRsMCRoMA..')",
+      }}
+    >
+      <div className="p-6 bg-white/90 backdrop-blur-md rounded-xl shadow-md w-1/5 text-center">
         <h1 className="text-4xl font-sans font-bold text-[#346530] mb-8">
           NICAXPLORA
         </h1>
 
-        {/* Este es el header de navegacion entre Signup y Login */}
         <div className="flex flex-row mb-8 rounded-full">
           <button className="w-full bg-[#346530] text-white py-2 rounded-l-2xl">
             Iniciar sesión

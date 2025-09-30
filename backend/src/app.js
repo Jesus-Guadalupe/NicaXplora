@@ -13,12 +13,14 @@ const loginEndpoints = require("./endpoints/login");
 const usuariosEndpoints = require("./endpoints/usuarios");
 const destacadosEndpoints = require("./endpoints/destacadosHome");
 const destinosEndpoints = require("./endpoints/destinos");
+const TransInterlocal = require("./endpoints/TransInterlocal");
 
 // Montar rutas
 app.use("/login", loginEndpoints);
 app.use("/usuarios", usuariosEndpoints);
 app.use("/destacados", destacadosEndpoints);
 app.use("/destinos", destinosEndpoints);
+app.use("/TranspInterlocal", TransInterlocal);
 
 // Servidor
 app.listen(port, () => {

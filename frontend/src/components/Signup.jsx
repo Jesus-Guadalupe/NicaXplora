@@ -3,14 +3,12 @@ import { getUsers, createUser } from "../services/userService";
 import { Link, useNavigate } from "react-router";
 
 function Signup({ onSwitch }) {
-  
-  //Variables de estado
   const [users, setUsers] = useState([]);
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newCountry, setNewCountry] = useState("");
-  const [error, setError] = useState(""); // Variable de estado para errores
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,17 +19,15 @@ function Signup({ onSwitch }) {
   }, []);
 
   const handleCreate = () => {
-    setError(""); // Se limpian errores antes de validar
+    setError("");
 
-    // Validación: campos vacíos
     if (!newName.trim() || !newEmail.trim() || !newPassword.trim() || !newCountry.trim()) {
       setError("Todos los campos son obligatorios");
       return;
     }
 
-    // Validación: longitud de contraseña
     if (newPassword.length > 10) {
-      setError("La contraseña no puede contener más de 10 caracteres"); // 👈 aquí la regla
+      setError("La contraseña no puede contener más de 10 caracteres");
       return;
     }
 
@@ -42,22 +38,23 @@ function Signup({ onSwitch }) {
         setNewEmail("");
         setNewPassword("");
         setNewCountry("");
-        setError(""); // limpiar errores después de éxito
+        setError("");
 
-        //Se guarda el usuario logueado automaticamente
         localStorage.setItem("user", JSON.stringify(res.data));
-
-        //Redirigir al Homepage luego de crear el usuario
-        navigate("/Homepage")
-
+        navigate("/Homepage");
       })
-
       .catch((err) => console.error("Error al crear usuario:", err));
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gray-100">
-      <div className="p-6 bg-white rounded-xl shadow-md w-1/5 text-center">
+    <div
+      className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url('https://images.pexels.com/photos/1292115/pexels-photo-1292115.jpeg?_gl=1*1apjsut*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyMDA5NjgkbzE3JGcxJHQxNzU5MjAxMzQ5JGoyNSRsMCRoMA..')",
+      }}
+    >
+      <div className="p-6 bg-white/90 backdrop-blur-md rounded-xl shadow-md w-1/5 text-center">
         <h1 className="text-4xl font-sans font-bold text-[#346530] mb-8">NICAXPLORA</h1>
 
         <div className="flex flex-row mb-8 rounded-full">
@@ -101,7 +98,6 @@ function Signup({ onSwitch }) {
           onChange={(e) => setNewCountry(e.target.value)}
         />
 
-        {/* Mostrar error si existe */}
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
         <button
