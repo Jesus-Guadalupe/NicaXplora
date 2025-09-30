@@ -4,7 +4,7 @@ const conexion = require("../db");
 
 //Endpoint para obtener todos los destinos  para "Destinos destacados" del Homepage
 router.get("/", (req, res) => {
-    conexion.query("Select * from destinations WHERE id = 1", (err, result) => {
+    conexion.query("Select * from destinations", (err, result) => {
         if(err) return res.status(500).json({message:"Error al obtener los destinos", error: err});
         return res.json(result);
     });
