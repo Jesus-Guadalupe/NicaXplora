@@ -19,10 +19,18 @@ const Homepage = () => {
   
   return <>
   <Navbar/>
-  {/*=======PRIMER SECTION DEL HOMEPAGE========*/}
-    <div className=' mt-10 bg-gradient-to-t from-[#4294C7] to-[#21441E] h-[40rem] flex justify-center'>
-        <div className=' flex flex-col justify-center items-center text-white'>
+{/*=======PRIMER SECTION DEL HOMEPAGE========*/}
+   <div
+  className="mt-10 h-[42rem] flex justify-center bg-cover bg-center bg-no-repeat relative"
+  style={{
+    backgroundImage:
+      "url('https://images.pexels.com/photos/14659909/pexels-photo-14659909.jpeg?_gl=1*hfns5i*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyNzUyMjgkbzE4JGcxJHQxNzU5Mjc3NDQ5JGo0MCRsMCRoMA..')",
+  }}
+>
+  {/* capa oscura encima de la imagen para que el texto se lea mejor */}
+  <div className="absolute inset-0 bg-black/30"></div>
 
+  <div className="relative z-10 flex flex-col justify-center items-center text-white px-6">
             <h1 className='text-6xl font-sans font-medium text-center'>
               Explora las maravillas de Nicaragua
             </h1>
