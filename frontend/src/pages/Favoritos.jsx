@@ -13,39 +13,45 @@ const Favoritos = () => {
   return <>
     <Navbar/>
 
-    {/*===========PRIMER SECTION FAVORITOS========== */}
-    <div className=' mt-10 bg-gradient-to-t from-[#4294C7] to-[#21441E] h-[40rem] flex justify-center'>
-        <div className=' flex flex-col justify-center items-center text-white' >
+    {/*=========== HEADER FAVORITOS ========== */}
+    <div
+      className="relative mt-10 h-[42rem] flex justify-center items-center bg-cover bg-center"
+      style={{
+        backgroundImage: "url('https://images.pexels.com/photos/5636574/pexels-photo-5636574.jpeg')"
+      }}
+    >
 
-            <h1 className='text-6xl font-sans font-medium'>
-              Mis favoritos
-            </h1>
 
-            <p className='font-thin text-xl mt-4'>
-              Destinos que has guardado para visitar
-            </p>
-        </div>
+      {/* Contenido */}
+      <div className="relative z-10 flex flex-col justify-center items-center text-white text-center px-6">
+        <h1 className="text-6xl font-sans font-medium drop-shadow-lg">
+          Mis favoritos
+        </h1>
+        <p className="font-thin text-xl mt-4 max-w-2xl">
+          Destinos que has guardado para visitar
+        </p>
+      </div>
     </div>
 
-    {/*=============SEGUNDA SECTION FAVORITOS========== */}
-    <div className=' min-h-screen h-screen p-[8rem] w-full' >
+    {/*============= SEGUNDA SECTION FAVORITOS ========== */}
+    <div className="min-h-screen h-auto p-[8rem] w-full bg-transparent">
       <DashFavorites/>
 
-          {/*BOTONES DE FILTRO*/}
-          <FilterButtons activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+      {/* BOTONES DE FILTRO */}
+      <FilterButtons activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
 
-          {/*======MOSTRAR COMPONENTE "No se encontraron favoritos"=========*/}
-            {Cards.length === 0 && <NotFavorites/>}
+      {/* Mostrar componente "No se encontraron favoritos" */}
+      {Cards.length === 0 && <NotFavorites/>}
 
-            <div className='flex flex-col items-center' >
-              <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem]' >
-                
-                {/*=======ACÁ VAN LAS CARDS======== */}
-                  
-              </div>
-            </div>
-          
-          
+      <div className="flex flex-col items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem]">
+          {/*======= ACÁ VAN LAS CARDS ======== */}
+          {/* Ejemplo:
+          {Cards.map((card, i) => (
+            <CardHome key={i} {...card} />
+          ))} */}
+        </div>
+      </div>
     </div>
   </>
 }

@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     // 🔹 Fondo oscuro del navbar
-    <header className='bg-[#141414] fixed top-0 w-screen z-10 shadow-lg'>
+    <header className='bg-[#141414] fixed top-0 w-screen z-50 shadow-lg'>
       <div className='flex justify-around flex-row items-center border-b border-gray-700 py-6'>
           
           {/* 🔹 Logo */}
