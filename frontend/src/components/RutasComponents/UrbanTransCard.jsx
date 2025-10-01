@@ -59,16 +59,16 @@ const UrbanTransCard = () => {
           </div>
 
           {/* Contenido de rutas */}
-          <div className='flex flex-col gap-6 p-6 bg-white'>
+          <div className='flex flex-col gap-6 p-6 bg-white' style={{ backgroundColor: "#1A1A1A" }}>
             {routeCity.routes.map((r, i) => (
-              <div key={i} className='bg-gray-50 shadow-md rounded-xl p-4 flex flex-col md:flex-row justify-between gap-4 items-center'>
+              <div key={i} className='bg-gray-50 shadow-md rounded-xl p-4 flex flex-col md:flex-row justify-between gap-4 items-center' style={{ backgroundColor: "#141414" }}>
                 
                 <div className='flex items-center gap-4'>
                   <div className='bg-[#346530] text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-xl'>
                     {r.number}
                   </div>
                   <div>
-                    <h2 className='font-semibold text-lg'>{r.from}</h2>
+                    <h2 className='font-semibold text-lg' >{r.from}</h2>
                     <p className='text-gray-600 text-sm'>Pasa por: {r.stops}</p>
                   </div>
                 </div>
