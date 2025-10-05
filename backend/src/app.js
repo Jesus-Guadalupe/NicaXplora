@@ -15,6 +15,7 @@ const destacadosEndpoints = require("./endpoints/destacadosHome");
 const destinosEndpoints = require("./endpoints/destinos");
 const TransInterlocal = require("./endpoints/TransInterlocal");
 const chatbotEndpoint = require("./endpoints/chatbot");
+const reviewsEndpoint = require("./endpoints/reviews");
 
 // Montar rutas
 app.use("/login", loginEndpoints);
@@ -22,9 +23,10 @@ app.use("/usuarios", usuariosEndpoints);
 app.use("/destacados", destacadosEndpoints);
 app.use("/destinos", destinosEndpoints);
 app.use("/TranspInterlocal", TransInterlocal);
-app.use("/chatbot", chatbotEndpoint)
+app.use("/chatbot", chatbotEndpoint);
+app.use("/reviews", reviewsEndpoint);
 
 // Servidor
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:` + port);
+    console.log(`Servidor escuchando en http://localhost:`+ port);
 });

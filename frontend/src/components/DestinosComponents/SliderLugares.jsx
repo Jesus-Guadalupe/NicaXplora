@@ -14,11 +14,5 @@ export default function SliderLugares( {destinos} ){
     slidesToScroll: 1,
     initialSlide:0,
   };
-
-  return (
-    <div className=''>
-                                   <Comentarios/>
-              </div>
-
-  )
+  
 }

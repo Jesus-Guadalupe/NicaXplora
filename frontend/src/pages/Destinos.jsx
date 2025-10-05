@@ -4,6 +4,7 @@ import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
 import SliderLugares from '../components/DestinosComponents/SliderLugares';
 import { useLocation } from "react-router"; // Para leer query params
+import Comentarios from '../components/DestinosComponents/Comentarios';
 
 const Destinos = () => {
   const [destinos, setDestinos] = useState([]); // Todos los destinos
@@ -31,6 +32,7 @@ const Destinos = () => {
   return (
     <>
       <Navbar />
+
 
       {/* Header con imagen de fondo */}
       <div
@@ -110,9 +112,14 @@ const Destinos = () => {
                 </div>
               </div>
 
-              {/* Slider de lugares relacionados */}
+              {/* Slider de lugares relacionados
               <div className="w-full">
                 <SliderLugares destinos={[dest]} />
+              </div> */}
+
+              {/*Comentarios*/}
+              <div className="w-full">
+                <Comentarios destinationId={dest.id}/>
               </div>
             </div>
           ))
