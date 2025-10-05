@@ -48,36 +48,6 @@ const Comentarios = ({ destinationId }) => {
     }
   };
 
-//   const handleComentar = async () => {
-//   if (!nuevoComentario.trim()) return;
-
-//   const data = {
-//     user_id: userId,           // prop o leído del localStorage
-//     destination_id: destinationId, // prop pasado al componente
-//     rating: null,
-//     comment: nuevoComentario,
-//   };
-
-//   // Aquí sí: logueamos el objeto que vamos a enviar
-//   console.log("Enviando comentario:", data);
-
-//   try {
-//     const res = await fetch("http://localhost:3100/reviews/add", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(data),
-//     });
-
-//     if (!res.ok) throw new Error("Error al enviar comentario");
-
-//     const nuevo = await res.json();
-//     setComentarios(prev => [{ ...nuevo, user_name: "Tú" }, ...prev]);
-//     setNuevoComentario("");
-//   } catch (err) {
-//     console.error("Error al enviar comentario:", err);
-//   }
-// };
-
   // 🔹 Eliminar un comentario
   const handleEliminar = async (id) => {
     try {
