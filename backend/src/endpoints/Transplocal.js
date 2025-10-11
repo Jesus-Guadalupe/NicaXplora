@@ -4,7 +4,7 @@ const conexion = require("../db");
 
 //Endpoint para obtener todos las rutas para la pantalla rutas
 router.get("/", (req, res) => {
-    conexion.query("Select * from interlocal_routes", (err, result) => {
+    conexion.query("Select * from local_routes", (err, result) => {
         if(err) return res.status(500).json({message:"Error al obtener los destinos", error: err});
         return res.json(result);
     });

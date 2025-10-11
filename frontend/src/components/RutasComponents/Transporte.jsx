@@ -4,18 +4,28 @@ import TransDepCard from './TransDepCard';
 import UrbanTransCard from './UrbanTransCard';
 
 function TransDep({ onSwitch }) {
-  const [rutas, setRutas] = useState([]);
+  const [rutasInterlocales, setRutasInterlocales] = useState([]);
+  const [filtro, setFiltro] = useState({ origen: '', destino: '' });
 
   useEffect(() => {
     fetch("http://localhost:3100/TranspInterlocal")
       .then(res => res.json())
-      .then(data => setRutas(data))
+      .then(data => setRutasInterlocales(data))
       .catch(err => console.error(err))
   }, []);
+
+  // Filtrado según selección
+  const rutasFiltradas = rutasInterlocales.filter(ruta => {
+    const matchOrigen = filtro.origen ? ruta.start_city === filtro.origen : true;
+    const matchDestino = filtro.destino ? ruta.end_city === filtro.destino : true;
+    return matchOrigen && matchDestino;
+  });
 
   return (
     <div className='w-full flex justify-center py-12 bg-transparent'>
       <div className='w-10/12 flex flex-col gap-8 bg-black/50 p-8 rounded-xl'>
+
+        {/* Botones de cambio de transporte */}
         <div className="flex justify-center">
           <div className='flex flex-row rounded-full shadow-xl overflow-hidden'>
             <button className="w-full bg-[#346530] text-white py-3 px-6 font-semibold hover:bg-[#21441E] transition-colors">
@@ -27,10 +37,12 @@ function TransDep({ onSwitch }) {
           </div>
         </div>
 
-        <BusquedaTransDep />
+        {/* Barra de filtros */}
+        <BusquedaTransDep onFilter={(origen, destino) => setFiltro({ origen, destino })} />
 
+        {/* Cards filtradas */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
-          {rutas.map(ruta => (
+          {rutasFiltradas.map(ruta => (
             <TransDepCard 
               key={ruta.id}
               startCity={ruta.start_city}
@@ -48,6 +60,15 @@ function TransDep({ onSwitch }) {
 }
 
 function TransUrb({ onSwitch }) {
+  const [rutasLocales, setRutasLocales] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3100/Transplocal")
+      .then(res => res.json())
+      .then(data => setRutasLocales(data))
+      .catch(err => console.error(err))
+  }, []);
+
   return (
     <div className='w-full flex justify-center py-12 bg-transparent'>
       <div className='w-10/12 flex flex-col gap-8 bg-black/50 p-8 rounded-xl'>
@@ -71,9 +92,19 @@ function TransUrb({ onSwitch }) {
           </p>
         </div>
 
-        <div className='grid grid-cols-1 gap-8'>
-          <UrbanTransCard />
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+          {rutasLocales.map(ruta => (
+            <UrbanTransCard 
+              key={ruta.id}
+              startPoint={ruta.start_point}
+              endPoint={ruta.end_point}
+              City={ruta.city}
+              travelTime={ruta.travel_time}
+              fare={ruta.fare}
+            />
+          ))}
         </div>
+
       </div>
     </div>
   );

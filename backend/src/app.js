@@ -16,6 +16,7 @@ const destinosEndpoints = require("./endpoints/destinos");
 const TransInterlocal = require("./endpoints/TransInterlocal");
 const chatbotEndpoint = require("./endpoints/chatbot");
 const reviewsEndpoint = require("./endpoints/reviews");
+const Transplocal = require("./endpoints/Transplocal");
 
 // Montar rutas
 app.use("/login", loginEndpoints);
@@ -25,6 +26,8 @@ app.use("/destinos", destinosEndpoints);
 app.use("/TranspInterlocal", TransInterlocal);
 app.use("/chatbot", chatbotEndpoint);
 app.use("/reviews", reviewsEndpoint);
+app.use("/Transplocal", Transplocal);
+
 
 // Servidor
 app.listen(port, () => {

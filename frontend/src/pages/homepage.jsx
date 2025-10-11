@@ -36,7 +36,7 @@ const Homepage = () => {
       className="mt-10 h-[42rem] flex justify-center bg-cover bg-center bg-no-repeat relative"
       style={{
         backgroundImage:
-          "url('https://images.pexels.com/photos/14659909/pexels-photo-14659909.jpeg?_gl=1*hfns5i*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyNzUyMjgkbzE4JGcxJHQxNzU5Mjc3NDQ5JGo0MCRsMCRoMA..')",
+          "url('fondo-home.jpeg ')",
       }}
     >
       {/* Capa oscura encima de la imagen */}
@@ -82,7 +82,7 @@ const Homepage = () => {
     {/* ======= SEGUNDA SECTION DEL HOMEPAGE: DESTINOS DESTACADOS ======= */}
     <div className='min-h-screen h-screen flex justify-center p-[8rem]'>
       <div className='flex flex-col items-center'>
-        <h1 className='font-bold lg:text-5xl text-[black] text-4xl text-center'>Destinos destacados</h1>
+        <h1 className='font-bold lg:text-5xl text-[white] text-4xl text-center'>Destinos destacados</h1>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem] justify-items-center'>
           {destinos.length === 0 ? (
@@ -97,6 +97,8 @@ const Homepage = () => {
                 image={destino.image_url}
                 activities={destino.activities}
                 category={destino.category}
+                entryPrice={destino.entry_price}
+                openingHours={destino.opening_hours}
               />
             ))
           )}

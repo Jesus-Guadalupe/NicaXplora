@@ -17,7 +17,7 @@ const Favoritos = () => {
     <div
       className="relative mt-10 h-[42rem] flex justify-center items-center bg-cover bg-center"
       style={{
-        backgroundImage: "url('https://images.pexels.com/photos/5636574/pexels-photo-5636574.jpeg')"
+        backgroundImage: "url('fondo-favoritos.jpeg')"
       }}
     >
 

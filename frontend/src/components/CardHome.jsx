@@ -1,9 +1,13 @@
 import React from 'react'
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
+import { useState } from 'react';
+
 
 const CardHome = ({ name, city, description, image, category, 
-  activities, entry_price, opening_hours }) => {
+  activities, entryPrice, openingHours }) => {
+  const [verMas, setVerMas] = useState(false);
+
 
   return (
     <div 
@@ -35,20 +39,27 @@ const CardHome = ({ name, city, description, image, category,
           Actividades: <span className='font-normal text-white'>{activities}</span>
         </p>
 
-        {/* Descripción */}
-        <p className='text-sm md:text-base text-white/80'>{description}</p>
+                  {/*Controla la vista de la descripcion en las card de destinos */}
+                  <p className="mt-2 text-white/80">
+                  {verMas ? description : `${description.slice(0, 100)}...`}
+                  </p>
+                    <button
+                      onClick={() => setVerMas(!verMas)}
+                      className="text-[#5aa794] font-medium mt-1 text-sm hover:underline"
+                    >
+                      {verMas ? "Ver menos" : "Ver más"}
+                    </button> 
 
         {/* Precios y horarios */}
         <div className='flex flex-row justify-between mt-2 text-sm md:text-base' style={{ color: "#5aa794" }}>
-          <p>Precio: <span className='font-medium text-white'>${entry_price}</span></p>
-          <p>Horario: <span className='font-medium text-white'>{opening_hours}</span></p>
+          <p>Precio: <span className='font-medium text-white'>${entryPrice}</span></p>
+          <p>Horario: <span className='font-medium text-white'>{openingHours}</span></p>
         </div>
 
         {/* Footer con íconos (estrellas y ubicación) */}
         <div className='flex flex-row justify-between mt-4'>
           <div className='flex flex-row items-center'>
-            <IoIosStar color='#5aa794' className='scale-125'/>
-            <p className='font-medium ml-1 text-white'>{/* Valoración futura */}</p>
+
           </div>
           <div className='flex flex-row items-center'>
             <PiMapPinFill color='#5aa794' className='scale-125'/>
