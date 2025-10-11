@@ -14,7 +14,7 @@ const Rutas = () => {
       <div
         className="relative mt-10 h-[43rem] flex justify-center items-center text-center"
         style={{
-          backgroundImage:"url('https://images.pexels.com/photos/8413944/pexels-photo-8413944.jpeg?_gl=1*7egjw6*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyNzUyMjgkbzE4JGcxJHQxNzU5Mjc3NDMwJGo1OSRsMCRoMA..')",
+          backgroundImage:"url('fondo-rutas.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

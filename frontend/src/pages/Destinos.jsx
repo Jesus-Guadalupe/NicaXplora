@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
-import SliderLugares from '../components/DestinosComponents/SliderLugares';
-import { useLocation } from "react-router"; // Para leer query params
+import { useLocation } from "react-router";
 import Comentarios from '../components/DestinosComponents/Comentarios';
 
 const Destinos = () => {
-  const [destinos, setDestinos] = useState([]); // Todos los destinos
-  const location = useLocation(); // Para leer la URL
+  const [destinos, setDestinos] = useState([]);
+  const [destinoSeleccionado, setDestinoSeleccionado] = useState(null); // Ventana emergente de comentarios
+  const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const searchTerm = query.get("search") || ""; // El texto buscado, si existe
+  const searchTerm = query.get("search") || "";
+  const [verMas, setVerMas] = useState(false);
 
-  // Cargar todos los destinos desde el backend
+  //  Cargar todos los destinos
   useEffect(() => {
     fetch("http://localhost:3100/destinos")
       .then(res => res.json())
@@ -20,7 +21,7 @@ const Destinos = () => {
       .catch(err => console.error("Error cargando destinos:", err));
   }, []);
 
-  // Filtrar los destinos según el searchTerm
+  // Filtrar según búsqueda
   const destinosFiltrados = searchTerm
     ? destinos.filter(destino =>
         (destino.name && destino.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -33,12 +34,11 @@ const Destinos = () => {
     <>
       <Navbar />
 
-
-      {/* Header con imagen de fondo */}
+      {/* Header */}
       <div
         className="mt-10 h-[45rem] flex justify-center items-center text-center bg-cover bg-center bg-no-repeat relative"
         style={{
-          backgroundImage: "url('https://images.pexels.com/photos/31071547/pexels-photo-31071547.jpeg?_gl=1*1ike5xx*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyNzUyMjgkbzE4JGcxJHQxNzU5Mjc1Mzk0JGozMiRsMCRoMA..')"
+          backgroundImage: "url('fondo-destinos.webp')"
         }}
       >
         <div className="absolute inset-0 bg-black/30"></div>
@@ -58,15 +58,16 @@ const Destinos = () => {
         </div>
       </div>
 
-      {/* Listado dinámico */}
+      {/* Listado de destinos */}
       <div className="min-h-screen h-auto p-[6rem] flex flex-col gap-12 items-center">
         {destinosFiltrados.length === 0 ? (
           <p className="text-gray-500 text-lg">No se encontraron destinos.</p>
         ) : (
           destinosFiltrados.map(dest => (
             <div
+              // Tamaño de las tarjetas de destinos
               key={dest.id}
-              className="w-11/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden"
+              className="w-10/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden"
               style={{ backgroundColor: "#141414" }}
             >
               {/* Imagen */}
@@ -84,7 +85,17 @@ const Destinos = () => {
               <div className="md:w-2/3 p-6 flex flex-col justify-between gap-4">
                 <div>
                   <h2 className="text-3xl font-bold text-white">{dest.name}</h2>
-                  <p className="mt-2 line-clamp-3 text-white/80">{dest.description}</p>
+                  
+                  {/*Controla la vista de la descripcion en las card de destinos */}
+                  <p className="mt-2 text-white/80">
+                  {verMas ? dest.description : `${dest.description.slice(0, 1000)}...`}
+                  </p>
+                    <button
+                      onClick={() => setVerMas(!verMas)}
+                      className="text-[#5aa794] font-medium mt-1 text-sm hover:underline"
+                    >
+                      {verMas ? "Ver menos" : "Ver más"}
+                    </button>
 
                   {dest.activities && (
                     <p className="mt-3 text-sm" style={{ color: "#5aa794" }}>
@@ -101,30 +112,49 @@ const Destinos = () => {
 
                 {/* Valoración y ubicación */}
                 <div className="flex justify-between items-center mt-3">
-                  <div className="flex items-center gap-2">
-                    <IoIosStar color="#5aa794" size={20} />
-                    <span className="font-medium text-white">4.8</span>
+                  <div className="flex items-center gap-2"> 
                   </div>
                   <div className="flex items-center gap-2 text-white/80">
                     <PiMapPinFill color="#5aa794" size={20} />
                     <span>{dest.city}</span>
                   </div>
                 </div>
-              </div>
 
-              {/* Slider de lugares relacionados
-              <div className="w-full">
-                <SliderLugares destinos={[dest]} />
-              </div> */}
-
-              {/*Comentarios*/}
-              <div className="w-full">
-                <Comentarios destinationId={dest.id}/>
+                {/* Botón para abrir comentarios */}
+                <div className="flex justify-end mt-4">
+                  <button
+                    onClick={() => setDestinoSeleccionado(dest)}
+                    className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
+                  >
+                    💬 Ver comentarios
+                  </button>
+                </div>
               </div>
             </div>
           ))
         )}
       </div>
+
+      {/* Modal de Comentarios */}
+      {destinoSeleccionado && (
+        <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50 px-4">
+          <div className="bg-[#1A1A1A] rounded-xl w-full max-w-2xl p-6 shadow-2xl relative animate-fadeIn">
+            {/* Botón cerrar */}
+            <button
+              onClick={() => setDestinoSeleccionado(null)}
+              className="absolute top-3 right-4 text-white text-2xl hover:text-red-400 transition"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-3xl font-bold mb-4 text-center text-white">
+              Comentarios de <span style={{ color: "#5aa794" }}>{destinoSeleccionado.name}</span>
+            </h2>
+
+            <Comentarios destinationId={destinoSeleccionado.id} />
+          </div>
+        </div>
+      )}
     </>
   );
 };
