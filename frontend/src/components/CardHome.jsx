@@ -2,10 +2,11 @@ import React from 'react'
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
 import { useState } from 'react';
+import { Children } from 'react';
 
 
 const CardHome = ({ name, city, description, image, category, 
-  activities, entryPrice, openingHours }) => {
+  activities, entryPrice, openingHours, children }) => {
   const [verMas, setVerMas] = useState(false);
 
 
@@ -66,6 +67,9 @@ const CardHome = ({ name, city, description, image, category,
             <p className='text-sm font-thin text-white'>{city}</p>
           </div>
         </div>
+
+        {/* Se renderiza children */}
+        {children}
 
       </div>
     </div>
