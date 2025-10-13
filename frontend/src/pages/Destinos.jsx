@@ -121,14 +121,42 @@ const Destinos = () => {
                 </div>
 
                 {/* Botón para abrir comentarios */}
-                <div className="flex justify-end mt-4">
-                  <button
-                    onClick={() => setDestinoSeleccionado(dest)}
-                    className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
-                  >
-                    💬 Ver comentarios
-                  </button>
+              <div className="flex justify-end mt-4 gap-3">
+                <button
+                onClick={() => setDestinoSeleccionado(dest)}
+                className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
+                >   
+                 💬 Ver comentarios
+                </button>
+
+                <button
+                  onClick={() => {
+                    // Obtener el usuario logueado
+                    const user = JSON.parse(localStorage.getItem("user"));
+                    if (!user) return alert("Debes iniciar sesión para agregar a favoritos");
+
+                    fetch("http://localhost:3100/favoritos", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ 
+                        user_id: user.id,       // <-- aquí usamos el id real del usuario logueado
+                        destination_id: dest.id
+                      }),
+                    })
+                    .then(res => res.json())
+                    .then(data => { 
+                      if (data.message) alert(data.message);
+                    })
+                    .catch(err => console.error("Error agregando favorito:", err));
+                  }}
+                  className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
+                >
+                  ⭐ Agregar a favoritos
+                </button>
+
+
                 </div>
+
               </div>
             </div>
           ))
