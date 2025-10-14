@@ -4,6 +4,7 @@ import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
 import { useLocation } from "react-router";
 import Comentarios from '../components/DestinosComponents/Comentarios';
+import { toast } from 'react-hot-toast';
 
 const Destinos = () => {
   const [destinos, setDestinos] = useState([]);
@@ -145,9 +146,9 @@ const Destinos = () => {
                     })
                     .then(res => res.json())
                     .then(data => { 
-                      if (data.message) alert(data.message);
+                      
                     })
-                    .catch(err => console.error("Error agregando favorito:", err));
+                    .catch(err => console.error("Error agregando favorito:", err), toast.error("Error agregando a favoritos"));
                   }}
                   className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
                 >

@@ -53,7 +53,7 @@ const Navbar = () => {
           </div>
 
           {/* 🔹 Botón menú hamburguesa móvil en verde */}
-          <button id='toggle' className='flex md:hidden lg:hidden mr-4 text-[#5aa794]'>
+          <button id='toggle' className='flex md:hidden lg:hidden mr-8 text-[#5aa794]'>
             <TextAlignJustify />
           </button>
       </div>
