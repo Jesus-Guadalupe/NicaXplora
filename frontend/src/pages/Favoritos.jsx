@@ -7,6 +7,7 @@ import CardHome from '../components/CardHome';
 import Footer from '../components/Footer';
 import { toast } from 'react-hot-toast';
 import { FaHeartBroken } from "react-icons/fa";
+import ConfirmacionEliminar from '../components/ConfirmacionEliminar';
 
 const Favoritos = () => {
   const [activeFilter, setActiveFilter] = useState("Favoritos");
@@ -84,6 +85,7 @@ const Favoritos = () => {
                 </button>
               </CardHome>
             ))}
+            <ConfirmacionEliminar />
           </div>
         </div>
       </div>
