@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
-import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
 import { useLocation } from "react-router";
 import Comentarios from '../components/DestinosComponents/Comentarios';
+import MapaDestino from '../components/DestinosComponents/MapaDestino';
 
 const Destinos = () => {
   const [destinos, setDestinos] = useState([]);
-  const [destinoSeleccionado, setDestinoSeleccionado] = useState(null); // Ventana emergente de comentarios
+  const [destinoSeleccionado, setDestinoSeleccionado] = useState(null); // Para comentarios
+  const [destinoMapa, setDestinoMapa] = useState(null); // Para mapa
+  const [verMasIds, setVerMasIds] = useState([]); // Para controlar "Ver más" por tarjeta
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const searchTerm = query.get("search") || "";
-  const [verMas, setVerMas] = useState(false);
 
-  //  Cargar todos los destinos
+  // Cargar todos los destinos
   useEffect(() => {
     fetch("http://localhost:3100/destinos")
       .then(res => res.json())
@@ -30,6 +31,14 @@ const Destinos = () => {
       )
     : destinos;
 
+  const toggleVerMas = (id) => {
+    if (verMasIds.includes(id)) {
+      setVerMasIds(verMasIds.filter(i => i !== id));
+    } else {
+      setVerMasIds([...verMasIds, id]);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -37,12 +46,9 @@ const Destinos = () => {
       {/* Header */}
       <div
         className="mt-10 h-[45rem] flex justify-center items-center text-center bg-cover bg-center bg-no-repeat relative"
-        style={{
-          backgroundImage: "url('fondo-destinos.webp')"
-        }}
+        style={{ backgroundImage: "url('fondo-destinos.webp')" }}
       >
         <div className="absolute inset-0 bg-black/30"></div>
-
         <div className="relative z-10 flex flex-col justify-center items-center text-white px-6">
           <h1 className="text-6xl font-bold tracking-wide">
             Descubre Nicaragua por Departamentos
@@ -63,103 +69,101 @@ const Destinos = () => {
         {destinosFiltrados.length === 0 ? (
           <p className="text-gray-500 text-lg">No se encontraron destinos.</p>
         ) : (
-          destinosFiltrados.map(dest => (
-            <div
-              // Tamaño de las tarjetas de destinos
-              key={dest.id}
-              className="w-10/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden"
-              style={{ backgroundColor: "#141414" }}
-            >
-              {/* Imagen */}
-              <div className="md:w-1/3 relative">
-                <img src={dest.image_url} alt={dest.name} className="w-full h-full object-cover" />
-                <span className="absolute top-4 left-4 bg-[#21441e] text-white px-3 py-1 rounded-full font-medium text-sm">
-                  {dest.city}
-                </span>
-                <span className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full font-medium text-sm">
-                  {dest.category}
-                </span>
-              </div>
+          destinosFiltrados.map(dest => {
+            const verMas = verMasIds.includes(dest.id);
+            return (
+              <div
+                key={dest.id}
+                className="w-10/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden"
+                style={{ backgroundColor: "#141414" }}
+              >
+                {/* Imagen */}
+                <div className="md:w-1/3 relative">
+                  <img src={dest.image_url} alt={dest.name} className="w-full h-full object-cover" />
+                  <span className="absolute top-4 left-4 bg-[#21441e] text-white px-3 py-1 rounded-full font-medium text-sm">
+                    {dest.city}
+                  </span>
+                  <span className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full font-medium text-sm">
+                    {dest.category}
+                  </span>
+                </div>
 
-              {/* Contenido */}
-              <div className="md:w-2/3 p-6 flex flex-col justify-between gap-4">
-                <div>
-                  <h2 className="text-3xl font-bold text-white">{dest.name}</h2>
-                  
-                  {/*Controla la vista de la descripcion en las card de destinos */}
-                  <p className="mt-2 text-white/80">
-                  {verMas ? dest.description : `${dest.description.slice(0, 1000)}...`}
-                  </p>
+                {/* Contenido */}
+                <div className="md:w-2/3 p-6 flex flex-col justify-between gap-4">
+                  <div>
+                    <h2 className="text-3xl font-bold text-white">{dest.name}</h2>
+                    <p className="mt-2 text-white/80">
+                      {verMas ? dest.description : `${dest.description.slice(0, 1000)}...`}
+                    </p>
                     <button
-                      onClick={() => setVerMas(!verMas)}
+                      onClick={() => toggleVerMas(dest.id)}
                       className="text-[#5aa794] font-medium mt-1 text-sm hover:underline"
                     >
                       {verMas ? "Ver menos" : "Ver más"}
                     </button>
 
-                  {dest.activities && (
-                    <p className="mt-3 text-sm" style={{ color: "#5aa794" }}>
-                      <span className="font-medium text-white">Actividades:</span> {dest.activities}
-                    </p>
-                  )}
-                </div>
-
-                {/* Horarios y precio */}
-                <div className="flex justify-between mt-4 text-sm" style={{ color: "#5aa794" }}>
-                  <span className="text-white">Horario: {dest.opening_hours}</span>
-                  <span className="text-white">Entrada: ${dest.entry_price}</span>
-                </div>
-
-                {/* Valoración y ubicación */}
-                <div className="flex justify-between items-center mt-3">
-                  <div className="flex items-center gap-2"> 
+                    {dest.activities && (
+                      <p className="mt-3 text-sm" style={{ color: "#5aa794" }}>
+                        <span className="font-medium text-white">Actividades:</span> {dest.activities}
+                      </p>
+                    )}
                   </div>
-                  <div className="flex items-center gap-2 text-white/80">
-                    <PiMapPinFill color="#5aa794" size={20} />
-                    <span>{dest.city}</span>
+
+                  <div className="flex justify-between mt-4 text-sm" style={{ color: "#5aa794" }}>
+                    <span className="text-white">Horario: {dest.opening_hours}</span>
+                    <span className="text-white">Entrada: ${dest.entry_price}</span>
+                  </div>
+
+                  <div className="flex justify-between items-center mt-3">
+                    <div className="flex items-center gap-2"></div>
+                    <div className="flex items-center gap-2 text-white/80">
+                      <PiMapPinFill color="#5aa794" size={20} />
+                      <span>{dest.city}</span>
+                    </div>
+                  </div>
+
+                  {/* Botones */}
+                  <div className="flex justify-end mt-4 gap-3">
+                    <button
+                      onClick={() => setDestinoSeleccionado(dest)}
+                      className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
+                    >
+                      💬 Ver comentarios
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        const user = JSON.parse(localStorage.getItem("user"));
+                        if (!user) return alert("Debes iniciar sesión para agregar a favoritos");
+
+                        fetch("http://localhost:3100/favoritos", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ 
+                            user_id: user.id,
+                            destination_id: dest.id
+                          }),
+                        })
+                        .then(res => res.json())
+                        .then(data => data.message && alert(data.message))
+                        .catch(err => console.error("Error agregando favorito:", err));
+                      }}
+                      className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
+                    >
+                      ⭐ Agregar a favoritos
+                    </button>
+
+                    <button
+                      onClick={() => setDestinoMapa(dest)}
+                      className="flex items-center gap-2 bg-[#21441e] text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-all text-sm font-medium shadow-md hover:shadow-lg"
+                    >
+                      📍 <span>Cómo llegar</span>
+                    </button>
                   </div>
                 </div>
-
-                {/* Botón para abrir comentarios */}
-              <div className="flex justify-end mt-4 gap-3">
-                <button
-                onClick={() => setDestinoSeleccionado(dest)}
-                className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
-                >   
-                 💬 Ver comentarios
-                </button>
-
-                <button
-                  onClick={() => {
-                    // Obtener el usuario logueado
-                    const user = JSON.parse(localStorage.getItem("user"));
-                    if (!user) return alert("Debes iniciar sesión para agregar a favoritos");
-
-                    fetch("http://localhost:3100/favoritos", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ 
-                        user_id: user.id,       // <-- aquí usamos el id real del usuario logueado
-                        destination_id: dest.id
-                      }),
-                    })
-                    .then(res => res.json())
-                    .then(data => { 
-                      if (data.message) alert(data.message);
-                    })
-                    .catch(err => console.error("Error agregando favorito:", err));
-                  }}
-                  className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
-                >
-                  ⭐ Agregar a favoritos
-                </button>
-
-
-                </div>
-
               </div>
-            </div>
-          ))
+            );
+          })
         )}
       </div>
 
@@ -167,7 +171,6 @@ const Destinos = () => {
       {destinoSeleccionado && (
         <div className="fixed inset-0 bg-black/70 flex justify-center items-center z-50 px-4">
           <div className="bg-[#1A1A1A] rounded-xl w-full max-w-2xl p-6 shadow-2xl relative animate-fadeIn">
-            {/* Botón cerrar */}
             <button
               onClick={() => setDestinoSeleccionado(null)}
               className="absolute top-3 right-4 text-white text-2xl hover:text-red-400 transition"
@@ -182,6 +185,14 @@ const Destinos = () => {
             <Comentarios destinationId={destinoSeleccionado.id} />
           </div>
         </div>
+      )}
+
+      {/* Modal de Mapa */}
+      {destinoMapa && (
+        <MapaDestino
+          destino={destinoMapa}
+          onClose={() => setDestinoMapa(null)}
+        />
       )}
     </>
   );

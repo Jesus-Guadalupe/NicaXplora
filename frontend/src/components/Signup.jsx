@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUsers, createUser } from "../services/userService";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup({ onSwitch }) {
   const [users, setUsers] = useState([]);
