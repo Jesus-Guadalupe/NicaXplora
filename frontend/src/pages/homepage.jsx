@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import { Search } from 'lucide-react'
 import CardHome from '../components/CardHome'
 import axios from 'axios';
 import Chatbot from '../components/Chatbot/Chatbot';
-import { useNavigate } from 'react-router'; // Para redirigir a Destinos.jsx
+import { useNavigate } from 'react-router-dom'; // Para redirigir a Destinos.jsx
+import Footer from '../components/Footer';
+import CardDisplay from '../components/CardDisplay';
 
 const Homepage = () => {
 
@@ -53,7 +55,7 @@ const Homepage = () => {
         </p>
 
         {/* Barra de búsqueda */}
-        <div className='bg-black py-4 text-white mt-4 flex flex-row items-center gap-4 px-8 w-11/12 justify-between rounded-md'>
+        <div className='bg-black py-4 text-white mt-4 flex flex-row items-center gap-4 px-8 w-11/12 justify-between rounded-md hover:shadow-md hover:drop-shadow-sm hover:shadow-emerald-500 transition-all'>
           <div>
             <Search className='scale-125'/>
           </div>
@@ -80,11 +82,12 @@ const Homepage = () => {
     </div>
 
     {/* ======= SEGUNDA SECTION DEL HOMEPAGE: DESTINOS DESTACADOS ======= */}
-    <div className='min-h-screen h-screen flex justify-center p-[8rem]'>
+    <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem]'>
+      
       <div className='flex flex-col items-center'>
         <h1 className='font-bold lg:text-5xl text-[white] text-4xl text-center'>Destinos destacados</h1>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem] justify-items-center'>
+        <div className='grid grid-cols-1 gap-[1rem] md:grid lg:grid md:grid-cols-2 lg:grid-cols-3 md:gap-[3rem] lg:gap-[rem] mt-8 pb-[8rem] justify-items-center lg:max-w-full md:max-w-full max-w-[340px]'>
           {destinos.length === 0 ? (
             <p className="text-gray-500 text-lg">No se encontraron destinos destacados.</p>
           ) : (
@@ -104,9 +107,11 @@ const Homepage = () => {
           )}
         </div>
       </div>
+        <CardDisplay/>
     </div>
 
     <Chatbot/>
+    <Footer/>
   </>
 }
 

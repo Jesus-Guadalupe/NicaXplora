@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import NotFavorites from '../components/NotFavorites';
 import DashFavorites from '../components/DashFavorites';
 import FilterButtons from '../components/FilterButtons';
 import CardHome from '../components/CardHome';
+import Footer from '../components/Footer';
+import { toast } from 'react-hot-toast';
+import { FaHeartBroken } from "react-icons/fa";
 
 const Favoritos = () => {
   const [activeFilter, setActiveFilter] = useState("Favoritos");
@@ -30,7 +33,7 @@ const Favoritos = () => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.message) alert(data.message);
+        if (data.message) toast.success(data.message);
         // Actualiza la lista de favoritos eliminando el eliminado
         setCards(prev => prev.filter(f => f.id !== favId));
       })
@@ -59,7 +62,7 @@ const Favoritos = () => {
 
         {/* Listado de favoritos */}
         <div className="flex flex-col items-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[3rem] mt-8 pb-[8rem]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1rem] lg:gap-[3rem] mt-8 pb-[8rem] justify-items-center">
             {Cards.map((fav) => (
               <CardHome
                 key={fav.id}
@@ -75,15 +78,16 @@ const Favoritos = () => {
                 {/* Botón de eliminar dentro de la card */}
                 <button
                   onClick={() => handleEliminarFavorito(fav.id)}
-                  className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-800 transition-all text-sm font-medium mt-2"
+                  className="bg-[#d45959] text-white px-3 py-2 rounded-md hover:bg-red-800 transition-all text-sm font-medium mt-2 flex items-center gap-2 justify-center"
                 >
-                  ❌ Eliminar de favoritos
+                  <FaHeartBroken/> Eliminar de favoritos
                 </button>
               </CardHome>
             ))}
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 function Login({ onSwitch }) {
   const [body, setBody] = useState({ username: "", password: "" });
@@ -19,13 +20,14 @@ function Login({ onSwitch }) {
     axios
       .post("http://localhost:3100/login", body)
       .then(({ data }) => {
-        console.log("Todo salió bien:", data);
+        toast.success("¡Inicio de sesión exitoso!");
         localStorage.setItem("user", JSON.stringify(data));
         navigate("/Homepage");
       })
       .catch((err) => {
         console.error("Error en login:", err.response?.data || err.message);
-        alert(err.response?.data?.message || "Usuario o contraseña inválidos");
+        toast.error(err.response?.data?.message || "Error en inicio de sesión");
+       
       });
   };
 
@@ -34,11 +36,11 @@ function Login({ onSwitch }) {
       className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://images.pexels.com/photos/1292115/pexels-photo-1292115.jpeg?_gl=1*1apjsut*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyMDA5NjgkbzE3JGcxJHQxNzU5MjAxMzQ5JGoyNSRsMCRoMA..')",
+          "url('https://i.ibb.co/HTstLsxw/Nica-Xplora-1-Mesa-de-trabajo-1.jpg')",
       }}
     >
 
-      <div className="p-6 bg-white/90 backdrop-blur-md rounded-xl shadow-md w-1/5 text-center" style={{ backgroundColor: "#141414 " }}>
+      <div className="p-6 min-w-[350px] bg-white/90 backdrop-blur-lg rounded-xl shadow-lg w-1/5 text-center shadow-emerald-500" style={{ backgroundColor: "#141414 " }}>
         <h1 className="text-4xl font-sans font-bold text-[#348050] mb-8">
           NICAXPLORA
         </h1>

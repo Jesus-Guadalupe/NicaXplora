@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import { IoIosStar } from "react-icons/io";
 import { PiMapPinFill } from "react-icons/pi";
-import { useLocation } from "react-router";
+import { BiSolidCommentDetail } from "react-icons/bi";
+import { useLocation } from "react-router-dom";
 import Comentarios from '../components/DestinosComponents/Comentarios';
+import { toast } from 'react-hot-toast';
+import Footer from '../components/Footer';
+import { IoArrowRedoCircle } from "react-icons/io5";
 
 const Destinos = () => {
   const [destinos, setDestinos] = useState([]);
@@ -59,7 +63,10 @@ const Destinos = () => {
       </div>
 
       {/* Listado de destinos */}
-      <div className="min-h-screen h-auto p-[6rem] flex flex-col gap-12 items-center">
+      <div className='flex justify-items-center md:max-w-full lg:max-w-full overflow-x-auto scroll-smooth scrollbar-hide'>
+
+      
+      <div className="min-h-[700px] lg:min-h-screen lg:h-auto p-[4rem] flex md:flex-col lg:flex-col flex-row gap-2 md:gap-6 lg:gap-12 items-center">
         {destinosFiltrados.length === 0 ? (
           <p className="text-gray-500 text-lg">No se encontraron destinos.</p>
         ) : (
@@ -67,16 +74,16 @@ const Destinos = () => {
             <div
               // Tamaño de las tarjetas de destinos
               key={dest.id}
-              className="w-10/12 rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300 flex flex-col md:flex-row overflow-hidden"
+              className="lg:w-10/12 max-h-[500px] w-[100%] hover:translate-y-[-4px] hover:cursor-pointer min-w-[400px] rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 flex flex-col md:flex-row overflow-hidden"
               style={{ backgroundColor: "#141414" }}
             >
               {/* Imagen */}
               <div className="md:w-1/3 relative">
-                <img src={dest.image_url} alt={dest.name} className="w-full h-full object-cover" />
+                <img src={dest.image_url} alt={dest.name} className="w-full h-[200px] md:h-full lg:h-full object-cover" />
                 <span className="absolute top-4 left-4 bg-[#21441e] text-white px-3 py-1 rounded-full font-medium text-sm">
                   {dest.city}
                 </span>
-                <span className="absolute top-4 right-4 bg-yellow-400 text-black px-3 py-1 rounded-full font-medium text-sm">
+                <span className="absolute top-4 right-4 bg-[#76ddc3] text-black px-3 py-1 rounded-full font-medium text-sm">
                   {dest.category}
                 </span>
               </div>
@@ -87,12 +94,12 @@ const Destinos = () => {
                   <h2 className="text-3xl font-bold text-white">{dest.name}</h2>
                   
                   {/*Controla la vista de la descripcion en las card de destinos */}
-                  <p className="mt-2 text-white/80">
+                  <p className="mt-2 text-white/80 lg:block md:block hidden ">
                   {verMas ? dest.description : `${dest.description.slice(0, 1000)}...`}
                   </p>
                     <button
                       onClick={() => setVerMas(!verMas)}
-                      className="text-[#5aa794] font-medium mt-1 text-sm hover:underline"
+                      className="text-[#5aa794] font-medium mt-1 text-sm hover:underline lg:block md:block hidden "
                     >
                       {verMas ? "Ver menos" : "Ver más"}
                     </button>
@@ -105,7 +112,7 @@ const Destinos = () => {
                 </div>
 
                 {/* Horarios y precio */}
-                <div className="flex justify-between mt-4 text-sm" style={{ color: "#5aa794" }}>
+                <div className="flex justify-between lg:mt-4 md:mt-4 mt-1 text-sm" style={{ color: "#5aa794" }}>
                   <span className="text-white">Horario: {dest.opening_hours}</span>
                   <span className="text-white">Entrada: ${dest.entry_price}</span>
                 </div>
@@ -122,11 +129,14 @@ const Destinos = () => {
 
                 {/* Botón para abrir comentarios */}
               <div className="flex justify-end mt-4 gap-3">
+
+                
+
                 <button
                 onClick={() => setDestinoSeleccionado(dest)}
-                className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
+                className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium flex items-center gap-2 hover:translate-y-[-2px] "
                 >   
-                 💬 Ver comentarios
+                 <BiSolidCommentDetail className='lg:text-xl md:text-xl text-2xl'/> Ver comentarios
                 </button>
 
                 <button
@@ -143,17 +153,27 @@ const Destinos = () => {
                         destination_id: dest.id
                       }),
                     })
-                    .then(res => res.json())
-                    .then(data => { 
-                      if (data.message) alert(data.message);
+                    .then(async (res) => {
+                    const data = await res.json();
+                      if (!res.ok) {
+                        throw new Error(data.message || "Error al agregar a favoritos");
+                      }
+                      toast.success(data.message || "¡Destino agregado a favoritos!");
                     })
-                    .catch(err => console.error("Error agregando favorito:", err));
+                    .catch((err) => {
+                      console.error("Error agregando a favoritos:", err);
+                      toast.error(err.message || "Error al agregar a favoritos");
+                    });
                   }}
-                  className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium"
+                
+                  className="bg-[#21441e] text-white px-4 py-2 rounded-md hover:bg-green-700 transition-all text-sm font-medium hover:translate-y-[-2px] flex items-center gap-2"
                 >
-                  ⭐ Agregar a favoritos
+                  <IoIosStar className='lg:text-xl md:text-xl text-4xl'/> Agregar a favoritos
                 </button>
 
+                <button className='bg-[#46a098] py-2 px-6 rounded-lg font-medium text-sm flex flex-row items-center gap-2 hover:translate-y-[-4px] hover:bg-[#c9b354] transition-all'>
+                    Cómo llegar<IoArrowRedoCircle className='lg:text-xl md:text-xl text-4xl'/>
+                </button>
 
                 </div>
 
@@ -183,6 +203,8 @@ const Destinos = () => {
           </div>
         </div>
       )}
+      </div>
+      <Footer />
     </>
   );
 };

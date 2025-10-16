@@ -12,7 +12,7 @@ const CardHome = ({ name, city, description, image, category,
 
   return (
     <div 
-      className='rounded-xl max-w-[24rem] min-w-72 shadow-lg cursor-pointer hover:translate-y-[-4px] transition-all relative'
+      className='rounded-xl max-w-[24rem] min-w-[350px] h-auto shadow-lg cursor-pointer hover:translate-y-[-4px] transition-all relative hover:shadow-md hover:drop-shadow-md hover:shadow-emerald-500'
       style={{ backgroundColor: "#1A1A1A" }} // Fondo negro profundo
     >
 
@@ -41,12 +41,12 @@ const CardHome = ({ name, city, description, image, category,
         </p>
 
                   {/*Controla la vista de la descripcion en las card de destinos */}
-                  <p className="mt-2 text-white/80">
+                  <p className="mt-2 text-white/80 lg:block md:block hidden ">
                   {verMas ? description : `${description.slice(0, 100)}...`}
                   </p>
                     <button
                       onClick={() => setVerMas(!verMas)}
-                      className="text-[#5aa794] font-medium mt-1 text-sm hover:underline"
+                      className="text-[#5aa794] font-medium mt-1 text-sm hover:underline lg:block md:block hidden "
                     >
                       {verMas ? "Ver menos" : "Ver más"}
                     </button> 
