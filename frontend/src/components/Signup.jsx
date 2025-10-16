@@ -51,10 +51,10 @@ function Signup({ onSwitch }) {
       className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://images.pexels.com/photos/1292115/pexels-photo-1292115.jpeg?_gl=1*1apjsut*_ga*ODM3NjkxNjY0LjE3NDcwNjg3OTM.*_ga_8JE65Q40S6*czE3NTkyMDA5NjgkbzE3JGcxJHQxNzU5MjAxMzQ5JGoyNSRsMCRoMA..')",
+          "url('https://i.ibb.co/HTstLsxw/Nica-Xplora-1-Mesa-de-trabajo-1.jpg')",
       }}
     >
-      <div className="p-6 bg-white/90 backdrop-blur-md rounded-xl shadow-md w-1/5 text-center" style={{ backgroundColor: "#141414 " }}>
+      <div className="p-6 min-w-[350px] bg-white/90 backdrop-blur-md rounded-xl shadow-lg shadow-emerald-500 w-1/5 text-center" style={{ backgroundColor: "#141414 " }}>
         <h1 className="text-4xl font-sans font-bold text-[#348050] mb-8">NICAXPLORA</h1>
 
         <div className="flex flex-row mb-8 rounded-full">

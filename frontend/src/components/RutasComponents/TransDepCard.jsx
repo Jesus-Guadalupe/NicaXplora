@@ -8,7 +8,7 @@ const TransDepCard = ({ startCity, endCity, startPoint, endPoint, travelTime, fa
       
       {/* Encabezado */}
       <div className='bg-gradient-to-tr from-[#346530] to-[#4294C7] py-8 px-6 flex flex-col items-center justify-center text-white text-center'>
-        <h1 className='text-4xl font-extrabold flex items-center gap-4'>
+        <h1 className='text-3xl lg:text-4xl md:text-3xl font-extrabold flex items-center gap-4'>
           <span>{startCity}</span>
           <FaLongArrowAltRight className='text-3xl text-yellow-300 animate-pulse' />
           <span>{endCity}</span>
@@ -19,7 +19,7 @@ const TransDepCard = ({ startCity, endCity, startPoint, endPoint, travelTime, fa
       </div>
 
       {/* Contenido */}
-      <div className='bg-[#1A1A1A] text-white p-8 grid grid-cols-1 md:grid-cols-2 gap-6'>
+      <div className='bg-[#1A1A1A] text-white p-8 grid grid-cols-1 md:grid-cols-2 gap-6 min-h-[180px]'>
         
         {/* Columna izquierda */}
         <div className='flex flex-col gap-5'>
