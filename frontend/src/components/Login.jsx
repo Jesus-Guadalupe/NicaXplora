@@ -90,24 +90,7 @@ function Login({ onSwitch }) {
             Regístrate
           </button>
 
-          <button
-            onClick={() => {
-              // Guardar datos falsos de invitado para evitar errores
-              localStorage.setItem(
-                "user",
-                JSON.stringify({
-                  id: "guest",
-                  username: "Invitado",
-                  role: "guest",
-                })
-              );
-              // Redirigir al homepage
-              navigate("/Homepage");
-            }}
-            className="text-base font-thin border-2 p-2 px-8 rounded-2xl text-slate-400 hover:text-slate-500 hover:bg-slate-300 hover:border-slate-300 transition-all"
-          >
-            Continuar como invitado
-          </button>
+          
 
         </p>
       </div>
