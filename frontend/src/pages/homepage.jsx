@@ -41,8 +41,6 @@ const Homepage = () => {
           "url('fondo-home.jpeg ')",
       }}
     >
-      {/* Capa oscura encima de la imagen */}
-      <div className="absolute inset-0 bg-black/30"></div>
 
       {/* Contenido de texto y barra de búsqueda */}
       <div className="relative z-10 flex flex-col justify-center items-center text-white px-6">
@@ -85,6 +83,7 @@ const Homepage = () => {
     {/* ======= SEGUNDA SECTION DEL HOMEPAGE: DESTINOS DESTACADOS ======= */}
     <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem] bg-black/30'>
       
+     
       
             {/* Capa oscura encima de la imagen */}
       <div className="absolute inset-0"></div>
