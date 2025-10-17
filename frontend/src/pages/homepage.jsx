@@ -81,9 +81,12 @@ const Homepage = () => {
       </div>
     </div>
 
+
     {/* ======= SEGUNDA SECTION DEL HOMEPAGE: DESTINOS DESTACADOS ======= */}
     <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem]'>
       
+            {/* Capa oscura encima de la imagen */}
+      <div className="absolute inset-0 bg-black/30"></div>
       <div className='flex flex-col items-center'>
         <h1 className='font-bold lg:text-5xl text-[white] text-4xl text-center'>Destinos destacados</h1>
 
