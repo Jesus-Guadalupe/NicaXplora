@@ -83,7 +83,8 @@ const Homepage = () => {
 
 
     {/* ======= SEGUNDA SECTION DEL HOMEPAGE: DESTINOS DESTACADOS ======= */}
-    <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem]'>
+    <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem] bg-black/30'>
+      
       
             {/* Capa oscura encima de la imagen */}
       <div className="absolute inset-0 bg-black/30"></div>

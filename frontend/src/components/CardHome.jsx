@@ -17,7 +17,7 @@ const CardHome = ({ name, city, description, image, category,
     >
 
       {/* Ciudad */}
-      <div className='py-2 px-4 rounded-full absolute top-2 left-2' style={{ backgroundColor: "#21441e" }}>
+      <div className='py-2 px-4 rounded-full absolute top-2 left-2' style={{ backgroundColor: "#346430" }}>
         <p className='text-white font-medium'>{city}</p>
       </div>
 

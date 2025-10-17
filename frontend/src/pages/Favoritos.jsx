@@ -7,11 +7,14 @@ import CardHome from '../components/CardHome';
 import Footer from '../components/Footer';
 import { toast } from 'react-hot-toast';
 import { FaHeartBroken } from "react-icons/fa";
-import ConfirmacionEliminar from '../components/ConfirmacionEliminar';
+import { IoMdCloseCircle } from "react-icons/io";
+import { LuHeartCrack } from "react-icons/lu";
 
 const Favoritos = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState("Favoritos");
   const [Cards, setCards] = useState([]);
+  const [selectedfav, setFav] = useState(null);
 
   // Obtener el usuario logueado desde el localStorage
   const user = JSON.parse(localStorage.getItem("user"));
@@ -37,6 +40,7 @@ const Favoritos = () => {
         if (data.message) toast.success(data.message);
         // Actualiza la lista de favoritos eliminando el eliminado
         setCards(prev => prev.filter(f => f.id !== favId));
+        setIsOpen(false); // Cierra el modal 
       })
       .catch(err => console.error("Error eliminando favorito:", err));
   };
@@ -56,8 +60,8 @@ const Favoritos = () => {
         </div>
       </div>
 
-      <div className="min-h-screen h-auto p-[8rem] w-full bg-transparent">
-        <DashFavorites />
+      <div className="min-h-screen h-auto p-[8rem] w-full bg-black/30">
+        <DashFavorites count={Cards.length}/>
         <FilterButtons activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
         {Cards.length === 0 && <NotFavorites />}
 
@@ -78,18 +82,50 @@ const Favoritos = () => {
               >
                 {/* Botón de eliminar dentro de la card */}
                 <button
-                  onClick={() => handleEliminarFavorito(fav.id)}
+                  onClick={() => {setIsOpen(true); setFav(fav.id);}}
                   className="bg-[#d45959] text-white px-3 py-2 rounded-md hover:bg-red-800 transition-all text-sm font-medium mt-2 flex items-center gap-2 justify-center"
                 >
                   <FaHeartBroken/> Eliminar de favoritos
                 </button>
               </CardHome>
             ))}
-            <ConfirmacionEliminar />
+            
+            {/* ==========Componente de confirmación de eliminación============= */}
+            {isOpen && (
+              <div className=' fixed inset-0 bg-black/70 flex justify-center items-center z-50 px-4'>
+                    <div className='bg-[#111111] h-[65vh] md:h-[65vh] lg:h-[60vh] w-[50vh] rounded-md p-8 flex flex-col items-center justify-center relative'>
+                            {/*Boton Cerrar pesataña*/}
+                            <button onClick={() => setIsOpen(!isOpen)}
+                            className='absolute top-5 right-5 mb-4 active:translate-y-[2px] transition-all'>
+                                <IoMdCloseCircle  size={30}/>
+                            </button>
+
+                        {/*Texto pestaña*/}
+                        <h1 className='text-white text-2xl font-semibold text-center pt-4'>¿Estás seguro de eliminar este destino de tus favoritos?</h1>
+                        <div className='bg-[#162D13] w-[8rem] h-[8rem] p-8 rounded-full flex justify-center items-center mt-8'>
+                            <LuHeartCrack size={100} color='#4BBA3F'/>
+                        </div>
+                            <p className='text-[#4BBA3F] mt-2 mb-10 font-semibold'>Eliminarás un destino de tus favoritos</p>
+
+
+                            {/*Boton eliminar */}
+                            <button onClick={() => handleEliminarFavorito(selectedfav)}
+                            className='bg-[#d45959] text-white w-11/12 p-5 md:py-5 lg:py-3 rounded-md hover:bg-red-800 active:translate-y-[2px] transition-all text-sm font-medium mt-2 flex items-center gap-2 justify-center'>
+                                <FaHeartBroken/> Eliminar
+                            </button>
+                            
+                            {/*Boton Cerrar pesataña*/}
+                            <button onClick={ () => setIsOpen(!isOpen)}
+                            className='bg-[#4BBA3F] text-white w-11/12 p-5 md:py-5 lg:py-3 rounded-md hover:bg-emerald-900 active:translate-y-[2px] transition-all text-sm font-medium mt-2 flex items-center gap-2 justify-center'>
+                                Cancelar
+                            </button>
+                        </div>
+                </div>
+        )}
           </div>
-        </div>
-      </div>
-      <Footer />
+          </div>
+          </div>
+          <Footer />
     </>
   );
 };

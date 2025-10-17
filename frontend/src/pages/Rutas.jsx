@@ -24,7 +24,7 @@ const Rutas = () => {
         <div className="absolute inset-0 bg-black/30"></div>
 
         {/* Contenido */}
-        <div className="relative flex flex-col justify-center items-center text-white gap-6 px-6 z-10">
+        <div className="relative flex flex-col justify-center items-center text-white gap-6 px-6 z-10 ">
           <h1 className="text-6xl font-semibold drop-shadow-lg animate-fade-in">
             Transporte Nicaragua
           </h1>

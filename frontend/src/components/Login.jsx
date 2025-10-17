@@ -36,7 +36,7 @@ function Login({ onSwitch }) {
       className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://i.ibb.co/HTstLsxw/Nica-Xplora-1-Mesa-de-trabajo-1.jpg')",
+          "url('https://i.ibb.co/GvYKnkGH/Fondo-Blanco-Nica-Xplora.jpg')",
       }}
     >
 

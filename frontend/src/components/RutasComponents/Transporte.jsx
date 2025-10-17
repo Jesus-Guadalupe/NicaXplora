@@ -31,7 +31,7 @@ function TransDep({ onSwitch }) {
             <button className="w-full bg-[#346530] text-white py-5 lg:py-3 lg:px-6 px-8 font-semibold hover:bg-[#21441E] transition-colors">
               Transporte Interdepartamental
             </button>
-            <button onClick={onSwitch} className="w-full rounded-b-lg border-2 border-[#1a1a1a] lg:rounded-r-full lg:border-l-0 text-[#5aa794] py-5 lg:py-3 lg:px-6 px-8 font-semibold hover:bg-[#1a1a1a] transition-colors">
+            <button onClick={onSwitch} className="w-full bg-[#1a1a1a] lg:rounded-r-full lg:border-l-0 text-[#5aa794] hover:text-[white] py-5 lg:py-3 lg:px-6 px-8 font-semibold hover:bg-[#21441E] transition-colors">
               Transporte Urbano
             </button>
           </div>
@@ -74,7 +74,7 @@ function TransUrb({ onSwitch }) {
       <div className='w-10/12 flex flex-col gap-8 bg-black/50 p-8 rounded-xl'>
         <div className="flex justify-center">
           <div className='flex flex-col lg:flex-row rounded-lg lg:rounded-full shadow-xl overflow-hidden'>
-            <button onClick={onSwitch} className="w-full rounded-t-lg border-2 border-[#1a1a1a] lg:rounded-l-full lg:border-r-0 text-[#5aa794] py-5 lg:py-3 lg:px-6 px-8 font-semibold hover:bg-[#1a1a1a] transition-colors">
+            <button onClick={onSwitch} className="w-full lg:rounded-l-full bg-[#1a1a1a] text-[#5aa794] hover:text-white py-5 lg:py-3 lg:px-6 px-8 font-semibold hover:bg-[#21441E] transition-colors">
               Transporte Interdepartamental
             </button>
             <button className="w-full bg-[#346530] text-white py-5 lg:py-3 px-6 font-semibold hover:bg-[#21441E] transition-colors">

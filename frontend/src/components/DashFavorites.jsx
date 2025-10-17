@@ -2,17 +2,17 @@ import React from 'react'
 import { FaHeart, FaList } from "react-icons/fa";
 import { TbMapCheck } from "react-icons/tb";
 
-const DashFavorites = () => {
+const DashFavorites = ({count}) => {
   return (
     <div className='w-full flex flex-row gap-4 justify-center' >
 
-          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center' style={{ backgroundColor: "#1A1A1A" }}>
-            <div className='flex lg:flex-row items-center'>
+          <div className='bg-[#1A1A1A] shadow-lg shadow-emerald-500 flex flex-col p-[2rem] md:w-[90vh] lg:w-[50vh] rounded-md items-center justify-center '>
+            <div className='flex lg:flex-row items-center mb-2'>
 
-              <FaHeart color='#346430' className='size-[3rem]'/>
+              <FaHeart color='#ffffff' className='size-[3rem]'/>
 
-              <h1 className='text-4xl text-[#346430] ml-4 font-medium'>
-                0
+              <h1 className='text-4xl text-white ml-2 font-medium'>
+                {count}
               </h1>
             </div>
 
@@ -22,37 +22,9 @@ const DashFavorites = () => {
 
           </div>
 
-          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center' style={{ backgroundColor: "#1A1A1A" }}>
-            <div className='flex flex-row items-center'>
+          
 
-              <TbMapCheck color='#346430' className='size-[3rem]'/>
-
-              <h1 className='text-4xl text-[#346430] ml-4 font-medium'>
-                0
-              </h1>
-            </div>
-
-              <div className='font-light'>
-                <p>Destinos favoritos</p>
-              </div>
-              
-          </div>
-
-          <div className='bg-slate-200 shadow-xl flex flex-col p-[2rem] lg:w-1/4 md:w-1/3 rounded-md items-center' style={{ backgroundColor: "#1A1A1A" }}>
-            <div className='flex flex-row items-center'>
-
-              <FaList color='#346430' className='size-[3rem]' />
-
-              <h1 className='text-4xl text-[#346430] ml-4 font-medium'>
-                0
-              </h1>
-            </div>
-
-              <div className='font-light'>
-                <p>Destinos favoritos</p>
-              </div>
-
-          </div>
+          
       </div>
   )
 }
