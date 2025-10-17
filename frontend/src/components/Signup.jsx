@@ -3,12 +3,14 @@ import { getUsers, createUser } from "../services/userService";
 import { Link, useNavigate } from "react-router-dom";
 
 function Signup({ onSwitch }) {
+  
+  //Variables de estado
   const [users, setUsers] = useState([]);
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newCountry, setNewCountry] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(""); // Variable de estado para errores
 
   const navigate = useNavigate();
 
@@ -19,15 +21,17 @@ function Signup({ onSwitch }) {
   }, []);
 
   const handleCreate = () => {
-    setError("");
+    setError(""); // Se limpian errores antes de validar
 
+    // Validación: campos vacíos
     if (!newName.trim() || !newEmail.trim() || !newPassword.trim() || !newCountry.trim()) {
       setError("Todos los campos son obligatorios");
       return;
     }
 
+    // Validación: longitud de contraseña
     if (newPassword.length > 10) {
-      setError("La contraseña no puede contener más de 10 caracteres");
+      setError("La contraseña no puede contener más de 10 caracteres"); // 👈 aquí la regla
       return;
     }
 
@@ -38,24 +42,23 @@ function Signup({ onSwitch }) {
         setNewEmail("");
         setNewPassword("");
         setNewCountry("");
-        setError("");
+        setError(""); // limpiar errores después de éxito
 
+        //Se guarda el usuario logueado automaticamente
         localStorage.setItem("user", JSON.stringify(res.data));
-        navigate("/Homepage");
+
+        //Redirigir al Homepage luego de crear el usuario
+        navigate("/Homepage")
+
       })
+
       .catch((err) => console.error("Error al crear usuario:", err));
   };
 
   return (
-    <div
-      className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url('https://i.ibb.co/HTstLsxw/Nica-Xplora-1-Mesa-de-trabajo-1.jpg')",
-      }}
-    >
-      <div className="p-6 min-w-[350px] bg-white/90 backdrop-blur-md rounded-xl shadow-lg shadow-emerald-500 w-1/5 text-center" style={{ backgroundColor: "#141414 " }}>
-        <h1 className="text-4xl font-sans font-bold text-[#348050] mb-8">NICAXPLORA</h1>
+    <div className="h-screen w-screen flex items-center justify-center bg-gray-100">
+      <div className="p-6 bg-white rounded-xl shadow-md w-1/5 text-center">
+        <h1 className="text-4xl font-sans font-bold text-[#346530] mb-8">NICAXPLORA</h1>
 
         <div className="flex flex-row mb-8 rounded-full">
           <button
@@ -72,32 +75,33 @@ function Signup({ onSwitch }) {
         <input
           type="text"
           placeholder="Nombre"
-          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
         />
         <input
           type="email"
           placeholder="Email"
-          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newEmail}
           onChange={(e) => setNewEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Contraseña"
-          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
         />
         <input
           type="text"
           placeholder="País"
-          className="w-full bg-[#424242] mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
+          className="w-full mb-3 px-3 py-2 border rounded-lg focus:outline-[#388f30]"
           value={newCountry}
           onChange={(e) => setNewCountry(e.target.value)}
         />
 
+        {/* Mostrar error si existe */}
         {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
 
         <button

@@ -7,22 +7,23 @@ import Destinos from './pages/Destinos'
 import Rutas from './pages/Rutas'
 import Favoritos from './pages/Favoritos'
 import ProtectedRoute from './components/ProtectedRoute' // import existente
-
+import Servicios from './pages/Servicios'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-          <Routes>
-            <Route path='/' element={<LoginPage/>}></Route>
+      <Routes>
+        <Route path='/' element={<LoginPage/>}></Route>
 
-            {/* Todas las rutas protegidas */}
-            <Route path='/homepage' element={<ProtectedRoute><Homepage/></ProtectedRoute>}></Route>
-            <Route path='/destinos' element={<ProtectedRoute><Destinos/></ProtectedRoute>}></Route>
-            <Route path='/rutas' element={<ProtectedRoute><Rutas/></ProtectedRoute>}></Route>
-            <Route path='/favoritos' element={<ProtectedRoute><Favoritos/></ProtectedRoute>}></Route>
-          </Routes>
+        {/* Todas las rutas protegidas */}
+        <Route path='/homepage' element={<ProtectedRoute><Homepage/></ProtectedRoute>}></Route>
+        <Route path='/destinos' element={<ProtectedRoute><Destinos/></ProtectedRoute>}></Route>
+        <Route path='/rutas' element={<ProtectedRoute><Rutas/></ProtectedRoute>}></Route>
+        <Route path='/favoritos' element={<ProtectedRoute><Favoritos/></ProtectedRoute>}></Route>
+        <Route path='/servicios' element={<ProtectedRoute><Servicios/></ProtectedRoute>}></Route>
+      </Routes>
     </>
   )
 }

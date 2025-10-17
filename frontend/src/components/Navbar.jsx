@@ -45,6 +45,9 @@ const Navbar = () => {
                   <li className='hover:text-white transition-colors'>
                       <a href="/favoritos">Favoritos</a>
                   </li>
+                  <li className='hover:text-white transition-colors'>
+                      <a href="/servicios">Servicios</a>
+                  </li>
               </ul>
           </div>
 
@@ -101,6 +104,12 @@ const Navbar = () => {
                     <a href="/favoritos">
                     <li className='hover:text-white transition-colors w-screen p-4 hover:bg-[#21441e]'>
                         Favoritos
+                    </li>
+                    </a>
+
+                    <a href="/Servicios">
+                    <li className='hover:text-white transition-colors w-screen p-4 hover:bg-[#21441e]'>
+                        Servicios
                     </li>
                     </a>
 
