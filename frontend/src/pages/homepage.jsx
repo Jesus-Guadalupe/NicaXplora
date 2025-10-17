@@ -84,6 +84,9 @@ const Homepage = () => {
     <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem] bg-black/30'>
       
      
+      
+            {/* Capa oscura encima de la imagen */}
+      <div className="absolute inset-0"></div>
       <div className='flex flex-col items-center'>
         <h1 className='font-bold lg:text-5xl text-[white] text-4xl text-center'>Destinos destacados</h1>
 
