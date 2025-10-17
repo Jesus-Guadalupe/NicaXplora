@@ -68,7 +68,7 @@ const Destinos = () => {
       </div>
 
       {/* Listado de destinos */}
-      <div className='flex justify-items-center md:max-w-full lg:max-w-full overflow-x-auto scroll-smooth scrollbar-hide'>
+      <div className='flex justify-items-center md:max-w-full lg:max-w-full overflow-x-auto scroll-smooth scrollbar-hide bg-black/30'>
         <div className="min-h-[700px] lg:min-h-screen lg:h-auto p-[4rem] flex md:flex-col lg:flex-col flex-row gap-2 md:gap-6 lg:gap-12 items-center">
           {destinosFiltrados.length === 0 ? (
             <p className="text-gray-500 text-lg">No se encontraron destinos.</p>

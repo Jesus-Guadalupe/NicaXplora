@@ -1,5 +1,5 @@
 export default function FilterButtons({ activeFilter, setActiveFilter }) {
-  const filters = ["Favoritos", "Visitados", "Lista de deseos"];
+  const filters = ["Favoritos"];
 
   return (
     <div className="flex justify-center gap-4 lg:flex-wrap">
@@ -10,7 +10,7 @@ export default function FilterButtons({ activeFilter, setActiveFilter }) {
           className={`px-6 py-2 rounded-lg font-medium transition-all mt-12
             ${
               activeFilter === filter
-                ? "bg-[#3c8b78] text-white shadow-md"
+                ? "bg-[#346430] text-white shadow-md"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
         >

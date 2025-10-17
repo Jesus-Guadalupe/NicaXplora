@@ -82,7 +82,8 @@ const Homepage = () => {
     </div>
 
     {/* ======= SEGUNDA SECTION DEL HOMEPAGE: DESTINOS DESTACADOS ======= */}
-    <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem]'>
+    <div className='min-h-screen h-auto flex justify-center p-[8rem] md:p-[8rem] lg:p-[8rem] bg-black/30'>
+      
       
       <div className='flex flex-col items-center'>
         <h1 className='font-bold lg:text-5xl text-[white] text-4xl text-center'>Destinos destacados</h1>

@@ -5,7 +5,7 @@ import { IoSend } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <div className='bg-gradient-to-t from-[#346430] to-40% to-[#111111] h-auto py-12 flex justify-evenly items-center lg:flex-row md:flex-row flex-col'>
+    <div className='bg-gradient-to-t from-[#346430] to-40% to-[#111111] h-auto py-12 flex justify-evenly items-center lg:flex-row md:flex-col flex-col'>
 
         {/*======primer section de footer====== */}
         <div>
@@ -46,7 +46,7 @@ const Footer = () => {
                 <p>Siguenos en nuestras redes!</p>
 
             {/*Iconos redes sociales*/}
-                <div className='flex flex-row text-white gap-6 ml-4 mt-4 text-3xl p-4'>
+                <div className='flex flex-col  md:flex-row lg:flex-row text-white gap-6 ml-4 mt-4 text-3xl p-4'>
                     <a href="https://www.instagram.com/nicaxplora/?igsh=MTl3ZTl6NDZlZnQweg%3D%3D#" target="_blank" 
                     className='flex items-center hover:cursor-pointer hover:translate-y-[-4px] transition-all gap-1'>
                         <RiInstagramFill className='' />
